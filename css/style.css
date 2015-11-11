@@ -9,7 +9,8 @@
 }
 
 .center_content {
-	width:1346px;
+	max-width:1346px;
+	width:100%;
 	height:inherit;
 	padding:0px 10px;
 	margin:0 auto;
