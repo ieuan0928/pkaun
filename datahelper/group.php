@@ -1,6 +1,11 @@
 <?php
 
+require_once('/datahelper/baseDataHelper.php');
+
 class GroupHelper {
+	function __construct(&$dbConfig) {
+		parent::__construct($dbConfig);
+	}
 	
 	private function GetSelectSQL() {
 		return "SELECT \n"
@@ -16,6 +21,10 @@ class GroupHelper {
 			. "ORDER BY entity_group.parentGroupId, baseentity.displayName\n"
 			. "\n"
 			. "";
+	}
+	
+	function GetList() {
+	
 	}
 }
 

@@ -8,6 +8,18 @@ $sort = null;
 
 require_once('/common/site.php');
 
+if (!isset($_SESSION["dbconfig"])) {
+	require_once('/common/databaseConfig.php');
+	
+	$dbConfig = new databaseConfig();
+	$dbConfig->Set("server", "localhost");
+	$dbConfig->Set("database", "fo_runner");
+	$dbConfig->Set("username", "root");
+	$dbConfig->Set("password", "");
+	
+	$_SESSION["dbconfig"] =& $dbConfig;
+}
+
 if (!isset($_GET['view'])) $view = "home";
 else $view = strtolower(trim($_GET['view'])); 
 
