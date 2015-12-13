@@ -30,7 +30,7 @@ class authenticationbase {
 		}
 		
 		return false;
-	}
+	} 
 }
 
 ?>

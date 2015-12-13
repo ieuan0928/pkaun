@@ -7,7 +7,7 @@ class databaseConfig extends authenticationbase {
 	private $server = '';
 	private $database = '';
 	
-	function Get ($propertyName) {
+	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
 			case "server":
 				return $this->server;
@@ -23,7 +23,7 @@ class databaseConfig extends authenticationbase {
 		return false;
 	}
 	
-	function Set($propertyName, $value) {
+	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
 			case "server":
 				$this->server = $value;

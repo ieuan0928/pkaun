@@ -17,7 +17,7 @@ if (!isset($_SESSION["dbconfig"])) {
 	$dbConfig->Set("username", "root");
 	$dbConfig->Set("password", "");
 	
-	$_SESSION["dbconfig"] =& $dbConfig;
+	$_SESSION["dbconfig"] = serialize($dbConfig);
 }
 
 if (!isset($_GET['view'])) $view = "home";

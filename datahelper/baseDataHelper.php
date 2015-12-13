@@ -4,8 +4,8 @@ require_once('/common/databaseConfig.php');
 
 class baseDataHelper {
 	
-	function __construct(databaseConfig &$dbConfig) {
-		$this->dbConfig =& $dbConfig;
+	function __construct($dbConfig) {
+		$this->dbConfig = $dbConfig;
 	}
 	
 	private $dbConfig = null;
@@ -18,11 +18,16 @@ class baseDataHelper {
 			$this->dbConfig->Get("database")
 		);
 		
+		$query = mysqli_query($connection, $sqlString);
+		$results = mysqli_fetch_array($query);
 		
-			
+		mysqli_close($connection);
+		
+		return $results;
 	}
 	
 	protected function executeNonQuery($sqlString) {
+		
 	}
 }
 

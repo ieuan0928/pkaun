@@ -2,8 +2,8 @@
 
 require_once('/datahelper/baseDataHelper.php');
 
-class GroupHelper {
-	function __construct(&$dbConfig) {
+class GroupHelper extends baseDataHelper {
+	function __construct($dbConfig) {
 		parent::__construct($dbConfig);
 	}
 	
@@ -24,7 +24,11 @@ class GroupHelper {
 	}
 	
 	function GetList() {
-	
+		$results = parent::executeQuery($this->GetSelectSQL());
+		
+		var_dump($results);
+		
+		return $results;
 	}
 }
 
