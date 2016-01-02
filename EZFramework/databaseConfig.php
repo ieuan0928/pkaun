@@ -1,6 +1,6 @@
 <?php
 
-require_once('/common/authenticationBase.php');
+require_once('/EZFramework/Common/authenticationBase.php');
 
 class databaseConfig extends authenticationbase {
 	

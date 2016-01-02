@@ -6,10 +6,10 @@ $view = null;
 $viewPage = null;
 $sort = null;
 
-require_once('/common/site.php');
+require_once('/EZFramework/site.php');
 
 if (!isset($_SESSION["dbconfig"])) {
-	require_once('/common/databaseConfig.php');
+	require_once('/EZFramework/databaseConfig.php');
 	
 	$dbConfig = new databaseConfig();
 	$dbConfig->Set("server", "localhost");
@@ -25,11 +25,11 @@ else $view = strtolower(trim($_GET['view']));
 
 switch ($view) {
 	case "home":
-		require_once('/home/home.php');
+		require_once('/pages/home.php');
 		$viewPage = new Home();
 		break;
 	case "store":
-		require_once('/store/stores.php');
+		require_once('/pages/stores.php');
 		$viewPage = new Stores();
 		break;
 }

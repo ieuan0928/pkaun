@@ -1,6 +1,6 @@
 <?php
 
-require_once('/datahelper/baseDataHelper.php');
+require_once('/EZFramework/Common/baseDataHelper.php');
 
 class GroupHelper extends baseDataHelper {
 	function __construct($dbConfig) {

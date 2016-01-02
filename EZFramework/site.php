@@ -1,6 +1,6 @@
 <?php 
 
-require_once('/common/pageBase.php');
+require_once('/EZFramework/Common/pageBase.php');
 
 class Site {
 	
