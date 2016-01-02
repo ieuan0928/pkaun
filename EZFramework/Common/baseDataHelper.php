@@ -1,6 +1,6 @@
 <?php
 
-require_once('/EZFramework/databaseConfig.php');
+require_once('/ezframework/databaseConfig.php');
 
 class baseDataHelper {
 	

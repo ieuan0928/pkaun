@@ -1,6 +1,6 @@
 <?php
 
-require_once('/EZFramework/Common/pageBase.php');
+require_once('/ezframework/common/pageBase.php');
 
 class Home extends PageBase {
 	

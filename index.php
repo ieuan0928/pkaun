@@ -6,10 +6,10 @@ $view = null;
 $viewPage = null;
 $sort = null;
 
-require_once('/EZFramework/site.php');
+require_once('/ezframework/site.php');
 
 if (!isset($_SESSION["dbconfig"])) {
-	require_once('/EZFramework/databaseConfig.php');
+	require_once('/ezframework/databaseConfig.php');
 	
 	$dbConfig = new databaseConfig();
 	$dbConfig->Set("server", "localhost");
