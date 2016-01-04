@@ -6,7 +6,7 @@ $view = null;
 $viewPage = null;
 $sort = null;
 
-require_once('/ezframework/site.php');
+require_once('/ezframework/common/site.php');
 
 if (!isset($_SESSION["dbconfig"])) {
 	require_once('/ezframework/databaseConfig.php');
