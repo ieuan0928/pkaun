@@ -1,8 +1,8 @@
 <?php
 
-require_once("/ezframework/uielements/uiBase.php");
+require_once('/ezframework/uielements/controlBase.php');
 
-class Panel extends UIBase {
+class Panel extends ControlBase {
 
 }
 
