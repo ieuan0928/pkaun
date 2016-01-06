@@ -3,7 +3,9 @@
 require_once('/ezframework/uielements/controlBase.php');
 
 class Panel extends ControlBase {
-	
+	public function __construct() {
+		$this->childControls = Array();
+	}
 	private $childControls;
 	
 	public function Get($propertyName) {
@@ -25,11 +27,39 @@ class Panel extends ControlBase {
 		}
 	}
 	
-	public function AddControl() {
+	public function AddControl(controlBase $child) {
+		array_push(	$this->childControls, $child);
+	}
+	
+	public function GetChildren($child) {
+		$idChildren = Array();
+		
+		array_push($idChildren, $child->Get("identifier"));
+		foreach ($this->childControls as $child) {
+			array_push($idChildren, $this->GetChildren($child));
+		}		
+		
+		var_dump($idChildren);
+		return $idChildren;
+	}
+	
+	public function GetChildrenRecursive() {
+		$idChildren = Array();
+		
+		foreach ($this->childControls as $child) {
+			array_push($idChildren, $this->GetChildren($child));
+		}
+		return $idChildren;
 	}
 	
 	public function Render() {
-		echo "<div id='$this->identifier'></div>";
+		echo "<div id='$this->identifier'>";
+		
+		foreach ($this->childControls as $child) {
+			$child->Render();
+		}
+		
+		echo "</div>";
 	}
 }
 

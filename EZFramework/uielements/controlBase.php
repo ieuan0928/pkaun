@@ -14,7 +14,7 @@ abstract class ControlBase extends UIBase {
 			case "classname":
 				return $this->className;
 				break;
-			case "identifider":
+			case "identifier":
 				return $this->identifier;
 				break;
 			case "width":
