@@ -6,6 +6,8 @@ require_once('/ezframework/uielements/groupBox.php');
 require_once('/ezframework/uielements/checkBox.php');
 require_once('/datahelper/group.php');
 
+require_once('/ezframework/uielements/contentControl.php');
+
 class Stores extends PageBase {
 	public function __construct() {	
 		$this->InitializeComponent();	
@@ -14,6 +16,8 @@ class Stores extends PageBase {
 	private function InitializeComponent() {
 		$this->panel1 = new Panel();
 		$this->panel2 = new Panel();
+		$this->panel3 = new Panel();
+		$this->panel4 = new Panel();
 		$this->groupBox1 = new GroupBox();
 		$this->checkBox1 = new CheckBox();
 		
@@ -26,11 +30,12 @@ class Stores extends PageBase {
 		
 		$this->groupBox1->Set("identifier", "group_box_id");
 		$this->groupBox1->Set("classname", "group_box_class");
+		$this->panel4->Set("identifier", "panel4_div");
 		
 		$this->checkBox1->Set("identifier", "checkbox_id");
 		$this->checkBox1->Set("name", "checkbox_name");
 		$this->checkBox1->Set("classname", "checkbox_class");
-		$this->checkBox1->Set("text", "i am a car");
+		$this->checkBox1->Set("content", $this->panel4);
 		$this->checkBox1->Set("value", "car");
 		
 		$this->panel2->AddControl($this->checkBox1);

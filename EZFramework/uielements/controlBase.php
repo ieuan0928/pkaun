@@ -23,6 +23,7 @@ abstract class ControlBase extends UIBase {
 				break;
 			default:
 				return parent::Get($popertyName);
+				break;
 		}
 	}
 	

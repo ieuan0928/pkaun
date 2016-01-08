@@ -1,14 +1,16 @@
 <?php
 
 require_once('/ezframework/uielements/controlBase.php');
+require_once('/ezframework/uielements/contentControl.php');
 
 class CheckBox extends ControlBase {
 	public function __construct() {
-		
+		$this->content = new ContentControl();
 	}
 	
+	private $contentId = "DefaultContent";
 	private $value;
-	private $text = "checkbox";
+	private $content;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -24,9 +26,13 @@ class CheckBox extends ControlBase {
 				$this->value = $value;
 				return true;
 				break;
-			case "text":
-				$this->text = $value;
+			case "content":
+				$this->content->Set("content", $value);
 				return true;
+				break;
+			case "identifier":
+				$this->content->Set("identifier", $value . "_" . $this->contentId);
+				return parent::Set($propertyName, $value);
 				break;
 			default:
 				return parent::Set($propertyName, $value);
@@ -39,7 +45,9 @@ class CheckBox extends ControlBase {
 	}
 	
 	public function Render() {
-		echo "<input type='checkbox' id='$this->identifier' class='$this->className' name='$this->name' value='$this->value'>" . $this->text ."</input>";
+		echo "<input type='checkbox' id='$this->identifier' class='$this->className' name='$this->name' value='$this->value'>";
+		$this->content->Render(); 
+		echo "</input>";
 	}
 }
 
