@@ -8,6 +8,7 @@ abstract class ControlBase extends UIBase {
 	protected $identifier;
 	protected $width;
 	protected $height;
+	protected $name;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -17,11 +18,8 @@ abstract class ControlBase extends UIBase {
 			case "identifier":
 				return $this->identifier;
 				break;
-			case "width":
-				return $this->width;
-				break;
-			case "height":
-				return $this->height;
+			case "name":
+				return $this->name;
 				break;
 			default:
 				return parent::Get($popertyName);
@@ -38,8 +36,8 @@ abstract class ControlBase extends UIBase {
 				$this->identifier = $value;
 				return true;
 				break;
-			case "width":
-				$this->width = $value;
+			case "name":
+				$this->name = $value;
 				return true;
 				break;
 			default:
