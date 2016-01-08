@@ -45,6 +45,10 @@ class CheckBox extends ControlBase {
 	}
 	
 	public function Render() {
+		
+	//	<div >
+	//<input type='checkbox' />adfasdf
+	//</div>
 		echo "<input type='checkbox' id='$this->identifier' class='$this->className' name='$this->name' value='$this->value'>";
 		$this->content->Render(); 
 		echo "</input>";
