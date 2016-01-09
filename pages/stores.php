@@ -25,8 +25,8 @@ class Stores extends PageBase {
 		
 		$this->panel2->Set("identifier", "groupbox1_body");
 		
-		$this->groupBox1->Get("Header")->AddControl($this->panel1);
-		$this->groupBox1->Get("Content")->AddControl($this->panel2);
+		$this->panel1->Set("Parent", $this->groupBox1->Get("Header"));
+		$this->panel2->Set("Parent",  $this->groupBox1->Get("Content"));
 		
 		$this->groupBox1->Set("identifier", "group_box_id");
 		$this->groupBox1->Set("classname", "group_box_class");
@@ -38,7 +38,7 @@ class Stores extends PageBase {
 		$this->checkBox1->Set("content", $this->panel4);
 		$this->checkBox1->Set("value", "car");
 		
-		$this->panel2->AddControl($this->checkBox1);
+		$this->checkBox1->Set("Parent", $this->panel2);
 		// $this->panel2->AddControl($this->panel1);
 		// $this->panel2->AddControl($this->panel3);
 		// $this->panel1->AddControl($this->panel4);
@@ -60,15 +60,6 @@ class Stores extends PageBase {
 	private $checkBox1;
 	
 	private $groupBox1;
-	
-	public function Render() {
-		/* $group = new GroupHelper(unserialize($_SESSION["dbconfig"]));
-		$group->GetList(); */
-		
-		$this->groupBox1->Render();
-		
-		//var_dump($this->panel2->GetChildrenRecursive());
-	}
 }
 
 ?>

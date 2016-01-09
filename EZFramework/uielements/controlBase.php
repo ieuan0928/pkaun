@@ -1,6 +1,7 @@
 <?php 
 
 require_once("/ezframework/uielements/uiBase.php");
+require_once("/ezframework/uielements/containerControl.php");
 
 abstract class ControlBase extends UIBase {
 
@@ -9,6 +10,8 @@ abstract class ControlBase extends UIBase {
 	protected $width;
 	protected $height;
 	protected $name;
+	
+	protected $parentControl;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -20,6 +23,9 @@ abstract class ControlBase extends UIBase {
 				break;
 			case "name":
 				return $this->name;
+				break;
+			case "parent":
+				return $this->parentControl;
 				break;
 			default:
 				return parent::Get($popertyName);
@@ -41,6 +47,16 @@ abstract class ControlBase extends UIBase {
 				$this->name = $value;
 				return true;
 				break;
+			case "parent":
+				if ($value instanceof ContainerControl) {
+					$this->parentControl  = &$value;
+					$value->AddControl($this);
+					return true;
+				}
+				else {
+					die("Parent must be of type ContainerControl.");
+					return false;
+				}
 			default:
 				return parent::Set($propertyName, $value);
 				break;
