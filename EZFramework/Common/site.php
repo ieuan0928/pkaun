@@ -25,7 +25,8 @@ class Site {
 		echo '</div>';
 		echo '</div>';
 		
-		echo $page->CreateElements()->Render();
+		$page->CreateElements();
+		$page->Render();
 		
 		echo '</body>';
 		echo '</html>';
