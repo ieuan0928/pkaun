@@ -9,11 +9,8 @@ require_once('/datahelper/group.php');
 require_once('/ezframework/uielements/contentControl.php');
 
 class Stores extends PageBase {
-	public function __construct() {	
-		$this->InitializeComponent();	
-	}
 	
-	private function InitializeComponent() {
+	public function CreateElements() {
 		$this->panel1 = new Panel();
 		$this->panel2 = new Panel();
 		$this->panel3 = new Panel();
@@ -30,6 +27,7 @@ class Stores extends PageBase {
 		
 		$this->groupBox1->Set("identifier", "group_box_id");
 		$this->groupBox1->Set("classname", "group_box_class");
+		$this->groupBox1->Set("Parent", $this);
 		$this->panel4->Set("identifier", "panel4_div");
 		
 		$this->checkBox1->Set("identifier", "checkbox_id");
@@ -50,7 +48,7 @@ class Stores extends PageBase {
 		// $this->panel3->Set("identifier", "igsuunniidkuno");
 		// $this->panel4->Set("identifier", "bilatniidkuno"); 
 		
-
+		return $this;
 	}
 	
 	private $panel1;
