@@ -9,6 +9,14 @@ class ContainerControl extends ControlBase {
 	
 	protected $childControls;
 	
+	public function Get($propertyName) {
+		return parent::Get($propertName);
+	}
+	
+	public function Set($propertyName, $value) {
+		return parent::Set($propertyName, $value);
+	}
+	
 	public function AddControl(controlBase $child) {
 		array_push($this->childControls, $child);
 	}

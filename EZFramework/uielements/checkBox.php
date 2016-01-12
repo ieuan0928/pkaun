@@ -1,9 +1,9 @@
 <?php
 
-require_once('/ezframework/uielements/controlBase.php');
+require_once('/ezframework/uielements/containerControl.php');
 require_once('/ezframework/uielements/contentControl.php');
 
-class CheckBox extends ControlBase {
+class CheckBox extends ContainerControl {
 	public function __construct() {
 		$this->content = new ContentControl();
 	}
@@ -40,15 +40,7 @@ class CheckBox extends ControlBase {
 		}
 	}
 	
-	public function AddControl(controlBase $child) {
-		array_push(	$this->childControls, $child);
-	}
-	
 	public function Render() {
-		
-	//	<div >
-	//<input type='checkbox' />adfasdf
-	//</div>
 		echo "<input type='checkbox' id='$this->identifier' class='$this->className' name='$this->name' value='$this->value'>";
 		$this->content->Render(); 
 		echo "</input>";
