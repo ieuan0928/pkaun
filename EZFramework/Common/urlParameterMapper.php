@@ -1,18 +1,13 @@
 <?php 
 
 class URLParameterMapper {
-	
 
-	private $urlParameter;
 	private $urlValue;
 	private $pageTypeName;
 	private $pagePath;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
-			case "urlparameter":
-				return $this->urlParameter;
-				break;
 			case "urlvalue":
 				return $this->urlValue;
 				break;
@@ -30,10 +25,6 @@ class URLParameterMapper {
 	
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
-			case "urlparameter":
-				$this->urlParameter = $value;
-				return true;
-				break;
 			case "urlvalue":	
 				$this->urlValue = $value;
 				return true;

@@ -11,6 +11,7 @@ $viewPage = null;
 $sort = null;
 
 require_once('/ezframework/common/site.php');
+require_once('/pages/main.php');
 
 if (!isset($_SESSION["dbconfig"])) {
 	require_once('/ezframework/databaseConfig.php');
@@ -27,17 +28,7 @@ if (!isset($_SESSION["dbconfig"])) {
 if (!isset($_GET['view'])) $view = "home";
 else $view = strtolower(trim($_GET['view'])); 
 
-switch ($view) {
-	case "home":
-		require_once('/pages/home.php');
-		$viewPage = new Home();
-		break;
-	case "store":
-		require_once('/pages/stores.php');
-		$viewPage = new Stores();
-		break;
-}
 
-Site::Render($viewPage);
+Site::Instance()->Render(new Main());
 
 ?>

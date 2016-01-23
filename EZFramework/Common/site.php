@@ -4,7 +4,30 @@ require_once('/ezframework/uielements/uiBase.php');
 
 class Site {
 	
-	public static function Render(UIBase &$page) {
+	private static $instance = null;
+	public static function Instance() {
+		if (is_null(Site::$instance)) Site::$instance = new Site();
+		
+		return Site::$instance;
+	}
+	
+	private $defaultTitle = null;
+	
+	public function Get($propertyName) {
+		switch (strtolower(trim($propertyName))) {
+			case "defaulttitle":
+				return $this->defaultTitle;
+				break;
+			default:
+				die('Unable to identify Property Name.');
+				break;
+		}
+	}
+	
+	public function Set($propertyName, $vvalue) {
+	}
+	
+	public function Render(UIBase &$page) {
 		echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
 		echo '<html xmlns="http://www.w3.org/1999/xhtml">';
 		echo '<head>';
@@ -15,15 +38,6 @@ class Site {
 		echo '<title>Title</title>';
 		echo '</head>';
 		echo '<body>';
-		echo '<div id="header">';
-		echo '<div id="header_content" class="center_content">';
-		echo '<div id="logo_container">Logo ug ngalan... </div>';
-		echo '<div id="menu_container">';
-		echo '<a href="#">Help</a>';
-		echo '<a href="#">Login or Sign-up</a>';
-		echo '</div>';
-		echo '</div>';
-		echo '</div>';
 		
 		$page->CreateElements();
 		$page->Render();

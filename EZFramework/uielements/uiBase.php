@@ -8,12 +8,12 @@ abstract class UIBase {
 	private $parent;
 	
 	public function Get($propertyName) {
-		die("Unable to allocate Property Name.");
+		die("Unable to idenfity the Property.");
 		return null;
 	}
 	
 	public function Set($propertyName, $value) {
-		die("Unable to allocated Property Name.");
+		die("Unable to idenfity the Property.");
 		return false;
 	}
 }

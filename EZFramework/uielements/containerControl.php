@@ -3,11 +3,8 @@
 require_once('/ezframework/uielements/controlBase.php');
 
 class ContainerControl extends ControlBase {
-	function __construct() {
-		$this->childControls = Array();
-	}
 	
-	protected $childControls;
+	protected $childControls = Array();
 	
 	public function Get($propertyName) {
 		return parent::Get($propertName);
