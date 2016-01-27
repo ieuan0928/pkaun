@@ -3,7 +3,7 @@
 require_once('/ezframework/uielements/containerControl.php');
 require_once('/ezframework/uielements/contentControl.php');
 
-class CheckBox extends ContainerControl {
+class RadioButton extends ContainerControl {
 	public function __construct() {
 		$this->content = new ContentControl();
 	}
@@ -41,10 +41,10 @@ class CheckBox extends ContainerControl {
 	}
 	
 	public function Render() {
-		$concat = "_checkBox_container";
+		$concat = "_radioButton_container";
 		
 		echo "<div class='$this->className$concat' id='$this->identifier$concat'>";
-		echo "<input type='checkbox' id='$this->identifier' class='$this->className' name='$this->name' value='$this->value'></input>";
+		echo "<input type='radio' id='$this->identifier' class='$this->className' name='$this->name' value='$this->value'></input>";
 		$this->content->Render(); 
 		echo "</div>";
 	}
