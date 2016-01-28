@@ -1,9 +1,9 @@
 <?php
 
-require_once('/ezframework/uielements/containerControl.php');
+require_once('/ezframework/uielements/controlBase.php');
 require_once('/ezframework/uielements/contentControl.php');
 
-class CheckBox extends ContainerControl {
+class CheckBox extends ControlBase {
 	public function __construct() {
 		$this->content = new ContentControl();
 	}

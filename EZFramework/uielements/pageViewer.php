@@ -63,8 +63,10 @@ class PageViewer extends ControlBase {
 		require_once($urlLocation->Get("PagePath"));
 		$pageTypeName = $urlLocation->Get("PageTypeName");
 		$pageToRender = new $pageTypeName();
-		$pageToRender->CreateElements()->Render();
 		
+		$pageToRender->CreateElements();
+		$pageToRender->Render();
+
 		echo "</div>";
 	}
 	
