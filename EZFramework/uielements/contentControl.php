@@ -3,7 +3,7 @@
 require_once('/ezframework/uielements/controlBase.php');
 require_once('/ezframework/uielements/panel.php');
 
-abstract class ContentControl extends ControlBase {
+class ContentControl extends ControlBase {
 	private $panelId = 'DefaultContent';
 	private $content = null;
 	private $panel = null;

@@ -59,8 +59,7 @@ class PageViewer extends ControlBase {
 		
 		if(isset($_GET[$this->postVariable])) { $urlLocation = $this->urlParameterCollection[strtolower($_GET[$this->postVariable])]; }
 		else { $urlLocation = $this->defaultUrlParameter; }
-		
-		var_dump($urlLocation);
+
 		require_once($urlLocation->Get("PagePath"));
 		$pageTypeName = $urlLocation->Get("PageTypeName");
 		$pageToRender = new $pageTypeName();
