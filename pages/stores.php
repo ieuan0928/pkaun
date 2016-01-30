@@ -1,3 +1,4 @@
+
 <?php
 
 require_once('/ezframework/uielements/pageBase.php');
@@ -9,6 +10,10 @@ require_once('/ezframework/uielements/textBox.php');
 require_once('/ezframework/uielements/label.php');
 require_once('/ezframework/uielements/textArea.php');
 require_once('/ezframework/uielements/comboBox.php');
+require_once('/ezframework/uielements/image.php');
+require_once('/ezframework/uielements/file.php');
+require_once('/ezframework/uielements/tabControl.php');
+require_once('/ezframework/uielements/tabContainer.php');
 require_once('/datahelper/group.php');
 require_once('/ezframework/uielements/contentControl.php');
 
@@ -19,6 +24,11 @@ class Stores extends PageBase {
 		$this->panel2 = new Panel();
 		$this->panel3 = new Panel();
 		$this->panel4 = new Panel();
+		$this->panel5 = new Panel();
+		$this->panel6 = new Panel();
+		$this->panel7 = new Panel();
+		$this->panel8 = new Panel();
+		$this->panel9 = new Panel();
 		$this->groupBox1 = new GroupBox();
 		$this->checkBox1 = new CheckBox();
 		$this->radioButton1 = new RadioButton();
@@ -27,17 +37,28 @@ class Stores extends PageBase {
 		$this->textarea_1 = new TextArea();
 		$this->comboBox_1 = new ComboBox();
 		$this->comboBox_2 = new ComboBox();
+		$this->image_1 = new Image();
+		$this->file_input = new File();
+		$this->label_with_Content_1 = new Label();
+		$this->label_with_Content_2 = new Label();
+		$this->label_with_Content_3 = new Label();
+		$this->label_with_Content_4 = new Label();
+		$this->logo = new Image();
+		$this->tab1 = new Tab();
+		$this->tab2 = new Tab();
+		$this->tab3 = new Tab();
+		$this->tab_container = new TabContainer();
 		
 		$this->panel1->Set("identifier", "groupbox1_header");
-		
-		$this->panel2->Set("identifier", "groupbox1_body");
-		
 		$this->panel1->Set("Parent", $this->groupBox1->Get("Header"));
+			
 		$this->panel2->Set("Parent",  $this->groupBox1->Get("Content"));
+		$this->panel2->Set("identifier", "groupbox1_body");
 		
 		$this->groupBox1->Set("identifier", "group_box_id");
 		$this->groupBox1->Set("classname", "group_box_class");
 		$this->groupBox1->Set("Parent", $this);
+		
 		$this->panel4->Set("identifier", "panel4_div");
 		
 		$this->checkBox1->Set("identifier", "checkbox_id");
@@ -84,6 +105,39 @@ class Stores extends PageBase {
 		$this->comboBox_2->Set("option", "three");
 		$this->comboBox_2->Set("option", "four");
 		
+		$this->image_1->Set("identifier", "id_image_1");
+		$this->image_1->Set("classname", "class_image_1");
+		$this->image_1->Set("image_path", "/pkaun/pkaun/resources/Numbuh_1.jpg");
+		
+		$this->logo->Set("identifier", "id_logo");
+		$this->logo->Set("classname", "class_logo");
+		$this->logo->Set("image_path", "/pkaun/pkaun/resources/arrow-down.png");
+		
+		$this->file_input->Set("identifier", "id_file_input");
+		$this->file_input->Set("classname", "class_file_input");
+		$this->file_input->Set("name", "name_file_input");
+		
+		$this->label_with_Content_1->Set("identifier", "id_label_with_content_1");
+		$this->label_with_Content_1->Set("classname", "class_label_with_content_1");
+		$this->label_with_Content_1->Set("value", "Tab Test");
+		$this->label_with_Content_1->Set("header", "h3");
+		$this->label_with_Content_1->Set("content", $this->logo);
+		
+		$this->label_with_Content_2->Set("identifier", "id_label_with_content_2");
+		$this->label_with_Content_2->Set("classname", "class_label_with_content_2");
+		$this->label_with_Content_2->Set("value", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		$this->label_with_Content_2->Set("header", "h5");
+		
+		$this->label_with_Content_3->Set("identifier", "id_label_with_content_3");
+		$this->label_with_Content_3->Set("classname", "class_label_with_content_3");
+		$this->label_with_Content_3->Set("value", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+		$this->label_with_Content_3->Set("header", "h5");
+		
+		$this->label_with_Content_4->Set("identifier", "id_label_with_content_4");
+		$this->label_with_Content_4->Set("classname", "class_label_with_content_4");
+		$this->label_with_Content_4->Set("value", "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
+		$this->label_with_Content_4->Set("header", "h5");
+		
 		$this->checkBox1->Set("Parent", $this->panel2);
 		$this->radioButton1->Set("Parent", $this->panel2);
 		$this->label_1->Set("parent", $this);
@@ -91,6 +145,56 @@ class Stores extends PageBase {
 		$this->textarea_1->Set("parent", $this);
 		$this->comboBox_1->Set("parent", $this);
 		$this->comboBox_2->Set("parent", $this);
+		$this->image_1->Set("parent", $this);
+		$this->file_input->Set("parent", $this);
+		
+		$this->tab_container->Set("identifier", "tab_cont_id");
+		$this->tab_container->Set("classname", "tab_cont_class");
+		$this->tab_container->Set("parent", $this);
+		
+		$this->tab1->Set("identifier", "id_tab_1");
+		$this->tab1->Set("classname", "class_tab_1");
+		$this->tab1->Set("status", "active");
+		$this->tab1->Set("parent", $this->tab_container);
+		
+		$this->panel3->Set("identifier", "label_panel_id_1");
+		$this->panel3->Set("classname", "label_panel_class_1");
+		$this->panel5->Set("identifier", "label_panel_id_2");
+		$this->panel5->Set("classname", "label_panel_class_2");
+		$this->panel6->Set("identifier", "label_panel_id_3");
+		$this->panel6->Set("classname", "label_panel_class_3");
+		$this->panel7->Set("identifier", "label_panel_id_7");
+		$this->panel7->Set("classname", "label_panel_class_7");
+		$this->panel8->Set("identifier", "label_panel_id_8");
+		$this->panel8->Set("classname", "label_panel_class_8");
+		$this->panel9->Set("identifier", "label_panel_id_9");
+		$this->panel9->Set("classname", "label_panel_class_9");
+		
+		$this->tab2->Set("identifier", "id_tab_2");
+		$this->tab2->Set("classname", "class_tab_2");
+		$this->tab2->Set("status", "inactive");
+		$this->tab2->Set("parent", $this->tab_container);
+	
+		$this->tab3->Set("identifier", "id_tab_3");
+		$this->tab3->Set("classname", "class_tab_3");
+		$this->tab3->Set("status", "inactive");
+		$this->tab3->Set("parent", $this->tab_container);
+		
+		$this->label_with_Content_1->Set("parent", $this->panel3);
+		$this->label_with_Content_1->Set("parent", $this->panel5);
+		$this->label_with_Content_1->Set("parent", $this->panel6);
+		
+		$this->label_with_Content_2->Set("parent", $this->panel7);
+		$this->label_with_Content_3->Set("parent", $this->panel8);
+		$this->label_with_Content_4->Set("parent", $this->panel9);
+		
+		$this->panel3->Set("parent", $this->tab1->Get("Header"));
+		$this->panel5->Set("parent", $this->tab2->Get("Header"));
+		$this->panel6->Set("parent", $this->tab3->Get("Header"));
+		
+		$this->panel7->Set("parent", $this->tab1->Get("content"));
+		$this->panel8->Set("parent", $this->tab2->Get("content"));
+		$this->panel9->Set("parent", $this->tab3->Get("content"));
 		
 		// $this->panel2->AddControl($this->panel1);
 		// $this->panel2->AddControl($this->panel3);
@@ -110,6 +214,11 @@ class Stores extends PageBase {
 	private $panel2;
 	private $panel3;
 	private $panel4;
+	private $panel5;
+	private $panel6;
+	private $panel7;
+	private $panel8;
+	private $panel9;
 	private $checkBox1;
 	private $radioButton1;
 	private $textBox1;
@@ -118,6 +227,17 @@ class Stores extends PageBase {
 	private $textarea_1;
 	private $comboBox_1;
 	private $comboBox_2;
+	private $image_1;
+	private $file_input;
+	private $label_with_Content_1;
+	private $label_with_Content_2;
+	private $label_with_Content_3;
+	private $label_with_Content_4;
+	private $logo;
+	private $tab_container;
+	private $tab1;
+	private $tab2;
+	private $tab3;
 }
 
 ?>

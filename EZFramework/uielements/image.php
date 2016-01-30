@@ -2,17 +2,15 @@
 
 require_once('/ezframework/uielements/controlBase.php');
 
-class Label extends ControlBase {
-	public function __construct() {
-		$this->content = new ContentControl();
-	}
-		
+class Image extends ControlBase {	
 	private $value;
-	private $header = "h1";
-	private $content;
+	private $img_src;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
+			case "image_path":
+				return $this->img_src;
+				break;
 			default:
 				return parent::Get($propertyName);
 				break;
@@ -25,12 +23,8 @@ class Label extends ControlBase {
 				$this->value = $value;
 				return true;
 				break;
-			case "header":
-				$this->header = $value;
-				return true;
-				break;
-			case "content":
-				$this->content->Set("content", $value);
+			case "image_path":	
+				$this->img_src = $value;
 				return true;
 				break;
 			default:
@@ -40,11 +34,10 @@ class Label extends ControlBase {
 	}
 	
 	public function Render() {
-		$concat = "_label_container";
+		$concat = "_img_container";
 		
 		echo "<div class='$this->className$concat' id='$this->identifier$concat'>";
-		echo "<$this->header id='$this->identifier' class='$this->className'>$this->value</$this->header>"; 
-		$this->content->Render(); 
+		echo "<img id='$this->identifier' class='$this->className' src='$this->img_src'></img>"; 
 		echo "</div>";
 	}
 }

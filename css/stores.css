@@ -1,0 +1,14 @@
+.header_tab_click
+{
+	cursor: pointer;
+}
+
+.tab_active
+{
+	display: block;
+}
+
+.tab_inactive
+{
+	display: none;
+}

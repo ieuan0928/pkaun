@@ -33,8 +33,10 @@ class Site {
 		echo '<head>';
 		echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 		echo '<meta name="viewport" content="initial-scale =1.0,maximum-scale = 1.0" />';
-		echo '<script type="text/javascript" src="/ezwap_admin/js/jquery-1.11.0.min.js"></script>';
+		echo '<script type="text/javascript" src="js/1.12.0-jquery.min.js"></script>';
+		echo '<script type="text/javascript" src="js/stores.js"></script>';
 		echo '<link rel="stylesheet" type="text/css" href="css/style.css" />';
+		echo '<link rel="stylesheet" type="text/css" href="css/stores.css" />';
 		echo '<title>Title</title>';
 		echo '</head>';
 		echo '<body>';

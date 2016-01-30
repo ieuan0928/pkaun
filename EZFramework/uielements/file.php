@@ -2,14 +2,8 @@
 
 require_once('/ezframework/uielements/controlBase.php');
 
-class Label extends ControlBase {
-	public function __construct() {
-		$this->content = new ContentControl();
-	}
-		
+class File extends ControlBase {	
 	private $value;
-	private $header = "h1";
-	private $content;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -25,14 +19,6 @@ class Label extends ControlBase {
 				$this->value = $value;
 				return true;
 				break;
-			case "header":
-				$this->header = $value;
-				return true;
-				break;
-			case "content":
-				$this->content->Set("content", $value);
-				return true;
-				break;
 			default:
 				return parent::Set($propertyName, $value);
 				break;	
@@ -40,11 +26,10 @@ class Label extends ControlBase {
 	}
 	
 	public function Render() {
-		$concat = "_label_container";
+		$concat = "_fileInput_container";
 		
 		echo "<div class='$this->className$concat' id='$this->identifier$concat'>";
-		echo "<$this->header id='$this->identifier' class='$this->className'>$this->value</$this->header>"; 
-		$this->content->Render(); 
+		echo "<input type='file' id='$this->identifier' class='$this->className' name='$this->name'></input>"; 
 		echo "</div>";
 	}
 }
