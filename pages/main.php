@@ -21,7 +21,6 @@ class Main extends PageBase {
 	private $storeUrlParameter;
 	private $dieUrlParameter;
 	
-		
 	public function CreateElements() {
 		$this->homeUrlParameter->Set("URLValue", "Home");
 		$this->homeUrlParameter->Set("PageTypeName", "Home");
