@@ -1,16 +1,27 @@
 <?php
 
 require_once('/ezframework/uielements/containerControl.php');
+//require_once('/ezframework/
 
 abstract class UIBase {	
 	abstract function Render();
 	
 	private $parent;
+	private $scriptCollection = Array();
 	
 	public function Get($propertyName) {
-		die("Unable to idenfity the Property.");
-		return null;
+		switch (strtolower(trim($propertyName))) {
+			case "scriptcollection":
+				return $this->scriptCollection;
+				break;
+			default:
+				die("Unable to idenfity the Property.");
+				return null;
+				break;
+		}
 	}
+	
+	public function AddScript($
 	
 	public function Set($propertyName, $value) {
 		die("Unable to idenfity the Property.");
