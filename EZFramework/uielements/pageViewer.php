@@ -8,6 +8,7 @@ class PageViewer extends ControlBase {
 	private $urlParameterCollection = Array();
 	private $defaultUrlParameter;
 	private $postVariable;
+	private $dieUrlParameter;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -19,6 +20,9 @@ class PageViewer extends ControlBase {
 				break;
 			case "postvariable":
 				return $this->postVariable;
+				break;
+			case "dieurlparameter":
+				return $this->dieUrlParameter;
 				break;
 			default:
 				return parent::Get($propertyName);
@@ -46,6 +50,16 @@ class PageViewer extends ControlBase {
 			case "postvariable":
 				$this->postVariable = $value;
 				return true;
+			case "dieurlparameter":
+				if ($value instanceof URLParameterMapper) {
+					$this->dieUrlParameter = &$value;
+					return true;
+				}
+				else {
+					die("Type does not match on ActiveURLParameter property.");
+					return false;
+				}
+				break;
 			default:
 				return parent::Set($propertyName, $value);
 				break;
@@ -56,16 +70,30 @@ class PageViewer extends ControlBase {
 		echo "<div id='$this->identifier'>";
 		
 		$urlLocation = null;
-		
-		if(isset($_GET[$this->postVariable])) { $urlLocation = $this->urlParameterCollection[strtolower($_GET[$this->postVariable])]; }
+		$urlKey = '';
+		if(isset($_GET[$this->postVariable])) {
+			$urlKey = strtolower($_GET[$this->postVariable]);
+			
+			if (array_key_exists($urlKey, $this->urlParameterCollection)) {
+				$urlLocation = $this->urlParameterCollection[$urlKey]; 
+			}
+			else if (isset($this->dieUrlParameter)) {
+				$urlLocation = $this->dieUrlParameter;
+			}
+		}
 		else { $urlLocation = $this->defaultUrlParameter; }
-
-		require_once($urlLocation->Get("PagePath"));
-		$pageTypeName = $urlLocation->Get("PageTypeName");
-		$pageToRender = new $pageTypeName();
 		
-		$pageToRender->CreateElements();
-		$pageToRender->Render();
+		if (is_null($urlLocation)) {
+			echo "Undefined Page for '$this->postVariable=$urlKey'.";
+		}
+		else {
+			require_once($urlLocation->Get("PagePath"));
+			$pageTypeName = $urlLocation->Get("PageTypeName");
+			$pageToRender = new $pageTypeName();
+			
+			$pageToRender->CreateElements();
+			$pageToRender->Render();
+		}
 
 		echo "</div>";
 	}
