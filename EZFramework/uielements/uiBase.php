@@ -1,7 +1,7 @@
 <?php
 
 require_once('/ezframework/uielements/containerControl.php');
-//require_once('/ezframework/
+require_once('/ezframework/Common/scriptMapper.php');
 
 abstract class UIBase {	
 	abstract function Render();
@@ -21,7 +21,8 @@ abstract class UIBase {
 		}
 	}
 	
-	public function AddScript($
+	public function AddScript($script) {
+	}
 	
 	public function Set($propertyName, $value) {
 		die("Unable to idenfity the Property.");

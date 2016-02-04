@@ -4,6 +4,7 @@
 
 /*testing commit*/
 
+
 session_start();
 
 $view = null;
@@ -11,7 +12,7 @@ $viewPage = null;
 $sort = null;
 
 require_once('/ezframework/common/site.php');
-require_once('/pages/main.php');
+require_once('/pages/test.php');
 
 if (!isset($_SESSION["dbconfig"])) {
 	require_once('/ezframework/databaseConfig.php');
@@ -29,6 +30,6 @@ if (!isset($_GET['view'])) $view = "home";
 else $view = strtolower(trim($_GET['view'])); 
 
 
-Site::Instance()->Render(new Main());
+Site::Instance()->Render(new test());
 
 ?>
