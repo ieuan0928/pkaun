@@ -1,7 +1,7 @@
 <?php
 
 require_once('/EZFramework/uielements/controlBase.php');
-require_once('/EZFramework/Common/urlParameterMapper.php');
+require_once('/EZFramework/common/urlParameterMapper.php');
 
 class PageViewer extends ControlBase {
 	

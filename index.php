@@ -1,9 +1,4 @@
-
-
 <?php 
-
-/*testing commit*/
-
 
 session_start();
 
@@ -11,7 +6,7 @@ $view = null;
 $viewPage = null;
 $sort = null;
 
-require_once('/ezframework/common/site.php');
+require_once('/EZFramework/common/site.php');
 require_once('/pages/main.php');
 
 if (!isset($_SESSION["dbconfig"])) {
@@ -26,6 +21,10 @@ if (!isset($_SESSION["dbconfig"])) {
 	$_SESSION["dbconfig"] = serialize($dbConfig);
 }
 
-Site::Instance()->Render(new Main());
+Site::Instance()->Helper()->StartSession();
+$testmain = new Main();
+Site::Instance()->Render($testmain);
+
+$testmain = null;
 
 ?>

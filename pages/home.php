@@ -6,6 +6,8 @@ class Home extends PageBase {
 	public function CreateElements() {
 		
 	}
+	
+	private $contentPageViewer;
 }
 
 ?>

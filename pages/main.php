@@ -2,7 +2,7 @@
 
 require_once('/ezframework/uielements/pageBase.php');
 require_once('/ezframework/uielements/pageViewer.php');
-require_once('/ezframework/common/urlParameterMapper.php');
+require_once('/EZFramework/common/urlParameterMapper.php');
 
 class Main extends PageBase {
 	public function __construct() {
@@ -43,6 +43,9 @@ class Main extends PageBase {
 		
 	}
 	
+	public function __destruct() {
+		echo 'na wala na ni class.';
+	}
 	
 }
 

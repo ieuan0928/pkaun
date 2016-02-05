@@ -1,7 +1,7 @@
 <?php
 
 require_once('/ezframework/uielements/containerControl.php');
-require_once('/ezframework/Common/scriptMapper.php');
+require_once('/EZFramework/common/scriptMapper.php');
 
 abstract class UIBase {	
 	abstract function Render();

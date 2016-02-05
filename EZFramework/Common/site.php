@@ -1,8 +1,16 @@
 <?php 
 
+require_once('/EZFramework/common/siteHelper.php');
 require_once('/ezframework/uielements/uiBase.php');
 
-class Site {
+final class Site {
+	
+	private $helper = null;
+	public function Helper() {
+		if (is_null($this->helper)) $this->helper = new SiteHelper();
+		
+		return $this->helper;
+	}
 	
 	private static $instance = null;
 	public static function Instance() {
@@ -10,7 +18,7 @@ class Site {
 		
 		return Site::$instance;
 	}
-	
+
 	private $defaultTitle = null;
 	
 	public function Get($propertyName) {
