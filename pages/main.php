@@ -40,13 +40,7 @@ class Main extends PageBase {
 		$this->contentPageViewer->Set("DieUrlParameter", $this->dieUrlParameter);
 		$this->contentPageViewer->AddURLParameter($this->homeUrlParameter);
 		$this->contentPageViewer->AddURLParameter($this->storeUrlParameter);
-		
-	}
-	
-	public function __destruct() {
-		echo 'na wala na ni class.';
-	}
-	
+	}	
 }
 
 ?>

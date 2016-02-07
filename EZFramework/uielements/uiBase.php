@@ -22,6 +22,8 @@ abstract class UIBase {
 	}
 	
 	public function AddScript($script) {
+		if ($script instanceof ScriptMapper) 
+		    array_push($scriptCollection, $script);
 	}
 	
 	public function Set($propertyName, $value) {
