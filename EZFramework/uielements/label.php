@@ -1,5 +1,5 @@
 <?php
-
+require_once('/ezframework/uielements/contentControl.php');
 require_once('/ezframework/uielements/controlBase.php');
 
 class Label extends ControlBase {
