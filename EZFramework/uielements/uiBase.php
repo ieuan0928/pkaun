@@ -1,18 +1,26 @@
 <?php
 
 require_once('/ezframework/uielements/containerControl.php');
-require_once('/EZFramework/common/scriptMapper.php');
+require_once('/ezframework/common/scriptMapper.php');
+require_once('/ezframework/common/externalScript.php');
+require_once('/ezframework/common/inlineScript.php');
 
 abstract class UIBase {	
-	abstract function Render();
+	public function Render() {}
+	public function OnPreparingRender() {}
 	
 	private $parent;
-	private $scriptCollection = Array();
+
+	private $inlineScripts = Array();
+	private $externalScripts = Array();
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
-			case "scriptcollection":
-				return $this->scriptCollection;
+			case "inlinescripts":
+				return $this->inlineScripts;
+				break;
+			case "externalscripts":
+				return $this->externalscripts;
 				break;
 			default:
 				die("Unable to idenfity the Property.");
@@ -21,9 +29,18 @@ abstract class UIBase {
 		}
 	}
 	
-	public function AddScript($script) {
-		if ($script instanceof ScriptMapper) 
-		    array_push($scriptCollection, $script);
+	public function AddInlineScript($inlineScript) {
+		if (!($inlineScript instanceof InlineScript)) return false;
+		
+		array_push($this->inlineScripts, $inlineScript);
+		return true;
+	}
+	
+	public function AddExternalScript($externalScript) {
+		if (!($externalScript instanceof ExternalScript)) return false;
+		
+		array_push($this->externalScripts, $externalScript);
+		return true;
 	}
 	
 	public function Set($propertyName, $value) {

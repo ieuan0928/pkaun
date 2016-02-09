@@ -32,7 +32,7 @@ final class Site {
 		}
 	}
 	
-	public function Set($propertyName, $vvalue) {
+	public function Set($propertyName, $value) {
 	}
 	
 	public function Render(UIBase &$page) {

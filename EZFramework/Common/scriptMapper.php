@@ -2,14 +2,10 @@
 
 class ScriptMapper {
 	
-	private $source;
 	private $embedLocation;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
-			case "source":
-				return $this->source;
-				break;
 			case "embedlocation":
 				return $this->embedLocation;
 				break;
@@ -22,10 +18,6 @@ class ScriptMapper {
 	
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
-			case "source":
-				$this->source = $value;
-				return true;
-				break;
 			case "embedlocation":
 				$this->embedLocation = $value;
 				return true;

@@ -3,6 +3,9 @@
 require_once("/ezframework/uielements/controlBase.php");
 require_once("/ezframework/uielements/contentControl.php");
 require_once("/ezframework/enum/buttonLinkTarget.php");
+require_once("/ezframework/enum/scriptEmbedLocationOption.php");
+require_once("/ezframework/common/externalScript.php");
+require_once("/ezframework/common/inlineScript.php");
 
 class LinkButton extends ControlBase {
 	public function __construct() {
@@ -14,6 +17,7 @@ class LinkButton extends ControlBase {
 	
 	private $content;
 	private $linkTarget;
+	private $clientLinkURLHelper;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -45,7 +49,17 @@ class LinkButton extends ControlBase {
 		}
 	}
 	
+	public function OnPrepareRender() {
+		$this->clientLinkURLHelper = new ExternalScript();
+		$this->clientLinkURLHelper->Set("Source", "ezframework/js/clientLinkURLHelper.js");
+		$this->clientLinkURLHelper->Set("EmbedLocation", ScriptEmbedLocationOption::Head);
+		
+		$this->AddExternalScript($this->clientLinkURLHelper);
+		return true;
+	}
+	
 	public function Render() {
+		$this->OnPrepareRender();
 	}
 }
 

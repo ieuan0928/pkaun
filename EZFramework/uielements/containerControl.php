@@ -14,7 +14,7 @@ class ContainerControl extends ControlBase {
 		return parent::Set($propertyName, $value);
 	}
 	
-	public function AddControl(controlBase $child) {
+	public function AddControl(controlBase &$child) {
 		array_push($this->childControls, $child);
 	}
 	
@@ -41,6 +41,9 @@ class ContainerControl extends ControlBase {
 	
 	public function Render() {
 		foreach ($this->childControls as $child) {
+			$child->OnPreparingRender();
+			
+			 
 			$child->Render();
 		}
 	}
