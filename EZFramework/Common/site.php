@@ -1,6 +1,6 @@
 <?php 
 
-require_once('/EZFramework/common/siteHelper.php');
+require_once('/ezframework/common/siteHelper.php');
 require_once('/ezframework/uielements/uiBase.php');
 
 final class Site {

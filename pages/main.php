@@ -7,6 +7,7 @@ require_once('/ezframework/common/urlParameterMapper.php');
 
 class Main extends PageBase {
 	public function __construct() {
+		parent::__construct();
 		$this->InitializeElements();
 	}
 	

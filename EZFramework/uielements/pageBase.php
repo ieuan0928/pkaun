@@ -1,10 +1,22 @@
 <?php 
 
 require_once("/ezframework/uielements/containerControl.php");
+require_once("/ezframework/common/externalScript.php");
+require_once("/ezframework/enum/scriptEmbedLocationOption.php");
 
 abstract class PageBase extends ContainerControl {
+	
+	public function __construct() {
+		$this->jqueryScript = new ExternalScript();
+		$this->jqueryScript->Set("Source", "js/1.12.0-jquery.min.js");
+		$this->jqueryScript->Set("EmbedLocation", ScriptEmbedLocationOption::Head);
+
+		$this->AddExternalScript($this->jqueryScript);
+	}
+	
 	public abstract function CreateElements(); 
 	
+	protected $jqueryScript;
 	protected $title = null;
 	protected $metaData = Array();
 	

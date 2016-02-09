@@ -38,7 +38,7 @@ abstract class UIBase {
 	public function AddExternalScript($externalScript) {
 		if (!($externalScript instanceof ExternalScript)) return false;
 		
-		array_push($this->externalScripts, $externalScript);
+		$this->externalScripts[$externalScript->Get("Source")] = $externalScript;
 		return true;
 	}
 	

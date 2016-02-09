@@ -5,7 +5,7 @@ require_once('/ezframework/common/scriptMapper.php');
 class ExternalScript extends ScriptMapper {
 	
 	private $source;
-	
+		
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
 			case "source":
