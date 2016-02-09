@@ -2,7 +2,8 @@
 
 require_once('/ezframework/uielements/pageBase.php');
 require_once('/ezframework/uielements/pageViewer.php');
-require_once('/EZFramework/common/urlParameterMapper.php');
+require_once('/ezframework/uielements/linkButton.php');
+require_once('/ezframework/common/urlParameterMapper.php');
 
 class Main extends PageBase {
 	public function __construct() {
@@ -14,12 +15,16 @@ class Main extends PageBase {
 		$this->homeUrlParameter = new URLParameterMapper();
 		$this->storeUrlParameter = new URLParameterMapper();
 		$this->dieUrlParameter = new URLParameterMapper();
+		$this->linkHome = new LinkButton();
+		$this->linkStores = new LinkButton();
 	}
 	
 	private $contentPageViewer;
 	private $homeUrlParameter;
 	private $storeUrlParameter;
 	private $dieUrlParameter;
+	private $linkHome;
+	private $linkStores;
 	
 	public function CreateElements() {
 		$this->homeUrlParameter->Set("URLValue", "Home");
@@ -33,6 +38,13 @@ class Main extends PageBase {
 		$this->dieUrlParameter->Set("PageTypeName", "ViewError");
 		$this->dieUrlParameter->Set("PagePath", "/pages/viewError.php");
 		
+		$this->linkHome->Set("Content", "Home");
+		$this->linkHome->Set("Parent", $this);
+		
+		$this->linkStores->Set("Content", "Stores");
+		$this->linkStores->Set("Parent", $this);
+		
+	
 		$this->contentPageViewer->Set("Parent", $this);
 		$this->contentPageViewer->Set("Identifier", "mainContentViewer");
 		$this->contentPageViewer->Set("PostVariable", "view");

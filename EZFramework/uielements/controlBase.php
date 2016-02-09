@@ -28,7 +28,7 @@ abstract class ControlBase extends UIBase {
 				return $this->parentControl;
 				break;
 			default:
-				return parent::Get($popertyName);
+				return parent::Get($propertyName);
 				break;
 		}
 	}

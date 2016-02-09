@@ -7,7 +7,6 @@ require_once('/ezframework/common/inlineScript.php');
 
 abstract class UIBase {	
 	public function Render() {}
-	public function OnPreparingRender() {}
 	
 	private $parent;
 
@@ -20,7 +19,7 @@ abstract class UIBase {
 				return $this->inlineScripts;
 				break;
 			case "externalscripts":
-				return $this->externalscripts;
+				return $this->externalScripts;
 				break;
 			default:
 				die("Unable to idenfity the Property.");
@@ -40,6 +39,15 @@ abstract class UIBase {
 		if (!($externalScript instanceof ExternalScript)) return false;
 		
 		array_push($this->externalScripts, $externalScript);
+		return true;
+	}
+	
+	public function AddExternalScripts($externalScriptCollection) {
+		
+		foreach ($externalScriptCollection as $externalScript) {
+			$this->AddExternalScript($externalScript);
+		}
+
 		return true;
 	}
 	

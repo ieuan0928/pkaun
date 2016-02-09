@@ -49,8 +49,11 @@ final class Site {
 		echo '</head>';
 		echo '<body>';
 		
+		
 		$page->CreateElements();
+		var_dump($page->Get("ExternalScripts"));
 		$page->Render();
+		
 		
 		echo '</body>';
 		echo '</html>';

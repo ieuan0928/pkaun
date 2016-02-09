@@ -7,7 +7,7 @@ class ContainerControl extends ControlBase {
 	protected $childControls = Array();
 	
 	public function Get($propertyName) {
-		return parent::Get($propertName);
+		return parent::Get($propertyName);
 	}
 	
 	public function Set($propertyName, $value) {
@@ -16,6 +16,8 @@ class ContainerControl extends ControlBase {
 	
 	public function AddControl(controlBase &$child) {
 		array_push($this->childControls, $child);
+		
+		$this->AddExternalScripts($child->Get("ExternalScripts"));
 	}
 	
 	public function GetChildren($child) {
@@ -41,8 +43,8 @@ class ContainerControl extends ControlBase {
 	
 	public function Render() {
 		foreach ($this->childControls as $child) {
-			$child->OnPreparingRender();
-			
+			if ($this instanceof PageBase)
+
 			 
 			$child->Render();
 		}

@@ -12,12 +12,19 @@ class LinkButton extends ControlBase {
 		$this->content = new ContentControl();
 		$this->linkTarget = ButtonLinkTarget::PageViewer;
 		
-		parent::__construct();
+		$this->clientLinkURLHelper = new ExternalScript();
+		$this->clientLinkURLHelper->Set("Source", "ezframework/js/clientLinkURLHelper.js");
+		$this->clientLinkURLHelper->Set("EmbedLocation", ScriptEmbedLocationOption::Head);
+		
+		$this->AddExternalScript($this->clientLinkURLHelper);
+
+		$this->linkInlineScript = new InlineScript();
 	}
 	
 	private $content;
 	private $linkTarget;
 	private $clientLinkURLHelper;
+	private $linkInlineScript;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -36,7 +43,7 @@ class LinkButton extends ControlBase {
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
 			case "content":
-				$this->content = $value;
+				$this->content->Set("Content", $value);
 				return true;
 				break;
 			case "linktarget":
@@ -44,22 +51,17 @@ class LinkButton extends ControlBase {
 				return true;
 				break;
 			default:
-				return parent::Get($propertyName);
+				return parent::Set($propertyName, $value);
 				break;
 		}
 	}
 	
-	public function OnPrepareRender() {
-		$this->clientLinkURLHelper = new ExternalScript();
-		$this->clientLinkURLHelper->Set("Source", "ezframework/js/clientLinkURLHelper.js");
-		$this->clientLinkURLHelper->Set("EmbedLocation", ScriptEmbedLocationOption::Head);
-		
-		$this->AddExternalScript($this->clientLinkURLHelper);
-		return true;
-	}
-	
 	public function Render() {
-		$this->OnPrepareRender();
+		echo "<div id='igit'>"; 
+		
+		$this->content->Render();
+		
+		echo "</div>";
 	}
 }
 
