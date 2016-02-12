@@ -1,8 +1,23 @@
 <?php
 
 require_once('/ezframework/uielements/containerControl.php');
+require_once("/ezframework/enum/scriptEmbedLocationOption.php");
+require_once("/ezframework/common/externalScript.php");
+require_once("/ezframework/common/inlineScript.php");
 
 class TabContainer extends ContainerControl {
+	public function __construct() {
+		$this->tabHelper = new ExternalScript();
+		$this->tabHelper->Set("Source", "ezframework/js/tabHelper.js");
+		$this->tabHelper->Set("EmbedLocation", ScriptEmbedLocationOption::Head);
+		
+		$this->AddExternalScript($this->tabHelper);
+
+		$this->linkInlineScript = new InlineScript();
+	}
+	
+	private $tabHelper;
+	private $linkInlineScript;
 	
 	public function Get($propertyName) {
 		return parent::Get($propertyName);

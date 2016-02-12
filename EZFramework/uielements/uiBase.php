@@ -44,6 +44,8 @@ abstract class UIBase {
 	
 	public function AddExternalScripts($externalScriptCollection) {
 		
+		//var_dump($this->externalScripts);
+		
 		foreach ($externalScriptCollection as $externalScript) {
 			$this->AddExternalScript($externalScript);
 		}
