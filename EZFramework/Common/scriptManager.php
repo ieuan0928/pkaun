@@ -18,10 +18,10 @@ class ScriptManager {
 			case "internalscripts":
 				return $this->inlineScripts;
 				break;
-			case "headexternalscript":
+			case "headexternalscripts":
 				return $this->headExternalScripts;
 				break;
-			case "bottomexternalscript":
+			case "bottomexternalscripts":
 				return $this->bottomExternalScripts;
 				break;
 			default:
@@ -34,7 +34,7 @@ class ScriptManager {
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
 			case "externalscripts":
-				$this->SegregateExternalScript($value);
+				$this->SetExternalScripts($value);
 				return true;
 				break;
 			case "internalscripts":
@@ -58,7 +58,7 @@ class ScriptManager {
 		$this->bottomExternalScripts = Array();
 	}
 	
-	private function SegregateExternalScript($value) {
+	public function SetExternalScripts($value) {
 		$this->InitializeExternalScripts($value);
 		
 		foreach ($this->externalScripts as $externalScript) {

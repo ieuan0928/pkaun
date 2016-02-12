@@ -36,6 +36,9 @@ final class Site {
 	}
 	
 	public function Render(UIBase &$page) {
+		$page->CreateElements();
+		self::Instance()->Helper()->Set("ExternalScripts", $page->Get("ExternalScripts"));
+		
 		echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
 		echo '<html xmlns="http://www.w3.org/1999/xhtml">';
 		echo '<head>';
@@ -50,8 +53,10 @@ final class Site {
 		echo '<body>';
 		
 		
-		$page->CreateElements();
-		var_dump($page->Get("ExternalScripts"));
+		
+		
+		
+		var_dump(self::Instance()->Helper()->Get("ScriptManager")->Get("HeadExternalScripts"));
 		$page->Render();
 		
 		

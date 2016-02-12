@@ -1,14 +1,21 @@
 <?php
 
+require_once('/ezframework/common/scriptManager.php');
+
 final class SiteHelper {
+	public function __construct() {
+		$this->scriptManager = new ScriptManager();
+	}
 	
-	private $externalScripts = Array();
+	private $scriptManager;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
 			case "externalscripts":
-				return $this->externalScripts;
+				return $this->scriptManager->Get("ExternalScripts");
 				break;
+			case "scriptmanager":
+				return $this->scriptManager;
 			default:
 				die("Unable to identify Property Name.");
 				return false;
@@ -18,9 +25,9 @@ final class SiteHelper {
 	
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
-			case "externalScripts":
-				$this->externalScripts = $value;
-				return $this->SegragateExternalScripts();
+			case "externalscripts":
+				$this->scriptManager->SetExternalScripts($value);
+				return true;
 				break;
 			default:
 				die("Unble to identify Property Name.");
@@ -28,11 +35,7 @@ final class SiteHelper {
 				break;
 		}
 	}
-	
-	private function SegragateExternalScripts() {
-		foreach ($this->externalScripts as $externalScript) {
-		}
-	}
+
 	
 	public function StartSession() {
 		$phpVersion = phpversion();
