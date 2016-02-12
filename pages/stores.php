@@ -31,6 +31,8 @@ class Stores extends PageBase {
 		$this->panel7 = new Panel();
 		$this->panel8 = new Panel();
 		$this->panel9 = new Panel();
+		$this->panel10 = new Panel();
+		$this->panel11 = new Panel();
 		$this->groupBox1 = new GroupBox();
 		$this->checkBox1 = new CheckBox();
 		$this->radioButton1 = new RadioButton();
@@ -45,10 +47,13 @@ class Stores extends PageBase {
 		$this->label_with_Content_2 = new Label();
 		$this->label_with_Content_3 = new Label();
 		$this->label_with_Content_4 = new Label();
+		$this->label_with_Content_5 = new Label();
 		$this->logo = new Image();
 		$this->tab1 = new Tab();
 		$this->tab2 = new Tab();
 		$this->tab3 = new Tab();
+		$this->tab4 = new Tab();
+		$this->tab_container_1 = new TabContainer();
 		$this->tab_container = new TabContainer();
 		$this->text_block_1 = new TextBlock();
 		
@@ -137,6 +142,12 @@ class Stores extends PageBase {
 		$this->label_with_Content_4->Set("value", "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
 		$this->label_with_Content_4->Set("header", "h5");
 		
+		
+		$this->label_with_Content_5->Set("identifier", "id_label_with_content_5");
+		$this->label_with_Content_5->Set("classname", "class_label_with_content_5");
+		$this->label_with_Content_5->Set("value", "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+		$this->label_with_Content_5->Set("header", "h5");
+		
 		$this->checkBox1->Set("Parent", $this->panel2);
 		$this->radioButton1->Set("Parent", $this->panel2);
 		$this->label_1->Set("parent", $this);
@@ -167,6 +178,10 @@ class Stores extends PageBase {
 		$this->panel8->Set("classname", "label_panel_class_8");
 		$this->panel9->Set("identifier", "label_panel_id_9");
 		$this->panel9->Set("classname", "label_panel_class_9");
+		$this->panel10->Set("identifier", "label_panel_id_10");
+		$this->panel10->Set("classname", "label_panel_class_10");
+		$this->panel11->Set("identifier", "label_panel_id_11");
+		$this->panel11->Set("classname", "label_panel_class_11");
 		
 		$this->tab2->Set("identifier", "id_tab_2");
 		$this->tab2->Set("classname", "class_tab_2");
@@ -178,21 +193,29 @@ class Stores extends PageBase {
 		$this->tab3->Set("status", "inactive");
 		$this->tab3->Set("parent", $this->tab_container);
 		
+		$this->tab4->Set("identifier", "id_tab_4");
+		$this->tab4->Set("classname", "class_tab_4");
+		$this->tab4->Set("status", "inactive");
+		
 		$this->label_with_Content_1->Set("parent", $this->panel3);
 		$this->label_with_Content_1->Set("parent", $this->panel5);
 		$this->label_with_Content_1->Set("parent", $this->panel6);
+		$this->label_with_Content_1->Set("parent", $this->panel10);
 		
 		$this->label_with_Content_2->Set("parent", $this->panel7);
 		$this->label_with_Content_3->Set("parent", $this->panel8);
 		$this->label_with_Content_4->Set("parent", $this->panel9);
+		$this->label_with_Content_5->Set("parent", $this->panel11);
 		
 		$this->panel3->Set("parent", $this->tab1->Get("Header"));
 		$this->panel5->Set("parent", $this->tab2->Get("Header"));
 		$this->panel6->Set("parent", $this->tab3->Get("Header"));
+		$this->panel10->Set("parent", $this->tab4->Get("Header"));
 		
 		$this->panel7->Set("parent", $this->tab1->Get("content"));
 		$this->panel8->Set("parent", $this->tab2->Get("content"));
 		$this->panel9->Set("parent", $this->tab3->Get("content"));
+		$this->panel11->Set("parent", $this->tab4->Get("content"));
 		
 		$this->text_block_type_1 = TagType::h3;
 		$this->text_block_1->Set("identifier", "id_text_block_1");
@@ -207,6 +230,14 @@ class Stores extends PageBase {
 		$this->textarea_1->Set("value", "Hello, I am a sample text area");
 		$this->textarea_1->Set("ismultiline", true);
 		$this->textarea_1->Set("parent", $this);
+		
+		$this->tab_container_1->Set("identifier", "tab_cont_id_1");
+		$this->tab_container_1->Set("classname", "tab_cont_class_1");
+		$this->tab_container_1->Set("parent", $this);
+		$this->tab1->Set("parent", $this->tab_container_1);
+		$this->tab2->Set("parent", $this->tab_container_1);
+		$this->tab3->Set("parent", $this->tab_container_1);
+		$this->tab4->Set("parent", $this->tab_container_1);
 		
 		// $this->panel2->AddControl($this->panel1);
 		// $this->panel2->AddControl($this->panel3);
@@ -231,6 +262,8 @@ class Stores extends PageBase {
 	private $panel7;
 	private $panel8;
 	private $panel9;
+	private $panel10;
+	private $panel11;
 	private $checkBox1;
 	private $radioButton1;
 	private $textBox1;
@@ -244,11 +277,14 @@ class Stores extends PageBase {
 	private $label_with_Content_2;
 	private $label_with_Content_3;
 	private $label_with_Content_4;
+	private $label_with_Content_5;
 	private $logo;
 	private $tab_container;
+	private $tab_container_1;
 	private $tab1;
 	private $tab2;
 	private $tab3;
+	private $tab4;
 	private $text_block_1;
 	private $text_block_type_1;
 	private $textarea_1;
