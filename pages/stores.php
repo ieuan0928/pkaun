@@ -1,3 +1,5 @@
+
+
 <?php
 
 require_once('/ezframework/uielements/pageBase.php');
@@ -18,9 +20,6 @@ require_once('/ezframework/enum/tagType.php');
 require_once('/ezframework/uielements/textBlock.php');
 
 class Stores extends PageBase {
-	public function __construct() {
-		
-	}
 	
 	public function CreateElements() {
 		$this->panel1 = new Panel();

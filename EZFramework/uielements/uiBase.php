@@ -39,7 +39,6 @@ abstract class UIBase {
 		if (!($externalScript instanceof ExternalScript)) return false;
 		
 		$this->externalScripts[$externalScript->Get("Source")] = $externalScript;
-		//var_dump($this->externalScripts);
 		return true;
 	}
 	
