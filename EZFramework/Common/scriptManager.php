@@ -72,6 +72,23 @@ class ScriptManager {
 			}
 		}
 	}
+	
+	public function RenderExternalScript($embedLocation) {
+		$scriptCollection = null;
+		
+		switch ($embedLocation) {
+			case ScriptEmbedLocationOption::Head:
+				$scriptCollection = $this->headExternalScripts;
+				break;
+			case ScriptEmbedLocationOption::Bottom:
+				$scriptCollection = $this->bottomExternalScripts;
+				break;
+		}
+		
+		foreach ($scriptCollection as $externalScript) {
+			echo '<script type="text/javascript" src="' . $externalScript->Get('Source') . '"></script>';
+		}
+	}
 }
 
 ?>

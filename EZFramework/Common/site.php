@@ -2,6 +2,7 @@
 
 require_once('/ezframework/common/siteHelper.php');
 require_once('/ezframework/uielements/uiBase.php');
+require_once('/ezframework/enum/scriptEmbedLocationOption.php');
 
 final class Site {
 	
@@ -44,19 +45,15 @@ final class Site {
 		echo '<head>';
 		echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 		echo '<meta name="viewport" content="initial-scale =1.0,maximum-scale = 1.0" />';
-		echo '<script type="text/javascript" src="js/1.12.0-jquery.min.js"></script>';
-		echo '<script type="text/javascript" src="js/stores.js"></script>';
+		
+		self::Instance()->Helper()->Get("scriptmanager")->RenderExternalScript(ScriptEmbedLocationOption::Head);
+
 		echo '<link rel="stylesheet" type="text/css" href="css/style.css" />';
 		echo '<link rel="stylesheet" type="text/css" href="css/stores.css" />';
 		echo '<title>Title</title>';
 		echo '</head>';
 		echo '<body>';
 		
-		
-		
-		
-		
-		var_dump(self::Instance()->Helper()->Get("ScriptManager")->Get("HeadExternalScripts"));
 		$page->Render();
 		
 		
