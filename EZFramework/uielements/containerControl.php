@@ -42,10 +42,7 @@ class ContainerControl extends ControlBase {
 	}
 	
 	public function Render() {
-		foreach ($this->childControls as $child) {
-			if ($this instanceof PageBase)
-
-			 
+		foreach ($this->childControls as $child) {			 
 			$child->Render();
 		}
 	}
