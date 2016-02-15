@@ -11,7 +11,7 @@ abstract class PageBase extends ContainerControl {
 		$this->jqueryScript->Set("Source", "js/1.12.0-jquery.min.js");
 		$this->jqueryScript->Set("EmbedLocation", ScriptEmbedLocationOption::Head);
 
-		$this->AddExternalScript($this->jqueryScript);
+		//$this->AddExternalScript($this->jqueryScript);
 	}
 	
 	public abstract function CreateElements(); 

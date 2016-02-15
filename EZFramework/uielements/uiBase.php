@@ -8,49 +8,19 @@ require_once('/ezframework/common/inlineScript.php');
 abstract class UIBase {	
 	public function Render() {}
 	
-	private $parent;
+	private $parentControl;
 
-	private $inlineScripts = Array();
-	private $externalScripts = Array();
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
-			case "inlinescripts":
-				return $this->inlineScripts;
-				break;
-			case "externalscripts":
-				return $this->externalScripts;
+			case "parent":
+				return $this->parentControl;
 				break;
 			default:
 				die("Unable to idenfity the Property.");
 				return null;
 				break;
 		}
-	}
-	
-	public function AddInlineScript($inlineScript) {
-		if (!($inlineScript instanceof InlineScript)) return false;
-		
-		array_push($this->inlineScripts, $inlineScript);
-		return true;
-	}
-	
-	public function AddExternalScript($externalScript) {
-		if (!($externalScript instanceof ExternalScript)) return false;
-		
-		$this->externalScripts[$externalScript->Get("Source")] = $externalScript;
-		return true;
-	}
-	
-	public function AddExternalScripts($externalScriptCollection) {
-		
-		//var_dump($this->externalScripts);
-		
-		foreach ($externalScriptCollection as $externalScript) {
-			$this->AddExternalScript($externalScript);
-		}
-
-		return true;
 	}
 	
 	public function Set($propertyName, $value) {

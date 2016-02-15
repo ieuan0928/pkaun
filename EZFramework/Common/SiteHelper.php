@@ -11,9 +11,6 @@ final class SiteHelper {
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
-			case "externalscripts":
-				return $this->scriptManager->Get("ExternalScripts");
-				break;
 			case "scriptmanager":
 				return $this->scriptManager;
 			default:
@@ -25,10 +22,6 @@ final class SiteHelper {
 	
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
-			case "externalscripts":
-				$this->scriptManager->SetExternalScripts($value);
-				return true;
-				break;
 			default:
 				die("Unble to identify Property Name.");
 				return false;

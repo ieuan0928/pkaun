@@ -17,7 +17,7 @@ class ContainerControl extends ControlBase {
 	public function AddControl(controlBase &$child) {
 		array_push($this->childControls, $child);
 		
-		$this->AddExternalScripts($child->Get("ExternalScripts"));
+		//$this->AddExternalScripts($child->Get("ExternalScripts"));
 	}
 	
 	public function GetChildren($child) {

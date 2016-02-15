@@ -16,7 +16,7 @@ class LinkButton extends ControlBase {
 		$this->clientLinkURLHelper->Set("Source", "ezframework/js/clientLinkURLHelper.js");
 		$this->clientLinkURLHelper->Set("EmbedLocation", ScriptEmbedLocationOption::Head);
 		
-		$this->AddExternalScript($this->clientLinkURLHelper);
+		//$this->AddExternalScript($this->clientLinkURLHelper);
 
 		$this->linkInlineScript = new InlineScript();
 	}

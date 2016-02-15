@@ -1,23 +1,14 @@
 <?php 
 
 require_once('/ezframework/enum/scriptEmbedLocationOption.php');
+require_once('/ezframework/common/externalScript.php');
 
-class ScriptManager {
-
-	private $externalScripts = Array();
-	private $inlineScripts = Array();
-	
+class ScriptManager {	
 	private $headExternalScripts = Array();
 	private $bottomExternalScripts = Array();
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
-			case "externalscripts":
-				return $this->externalScripts;
-				break;
-			case "internalscripts":
-				return $this->inlineScripts;
-				break;
 			case "headexternalscripts":
 				return $this->headExternalScripts;
 				break;
@@ -33,14 +24,6 @@ class ScriptManager {
 	
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
-			case "externalscripts":
-				$this->SetExternalScripts($value);
-				return true;
-				break;
-			case "internalscripts":
-				$this->inlineScripts = $value;
-				return true;
-				break;
 			default:
 				die("Unable to identify Property Name.");
 				return false;
@@ -48,31 +31,18 @@ class ScriptManager {
 		}
 	}
 	
-	private function InitializeExternalScripts($value) {
-		unset($this->externalScripts);
-		unset($this->headExternalScripts);
-		unset($this->bottomExternalScripts);
-		
-		$this->externalScripts = $value;
-		$this->headExternalScripts = Array();
-		$this->bottomExternalScripts = Array();
-	}
-	
-	public function SetExternalScripts($value) {
-		$this->InitializeExternalScripts($value);
-		
-		foreach ($this->externalScripts as $externalScript) {
-			switch ($externalScript->Get("EmbedLocation")) {
-				case ScriptEmbedLocationOption::Head:
-					array_push($this->headExternalScripts, $externalScript);
-					break;
-				case ScriptEmbedLocationOption::Bottom:
-					array_push($this->bottomExternalScripts, $externalScript);
-					break;
-			}
+	public function AddExternalScript(ExternalScript $externalScript) {
+		$externalScriptSource = $externalScript->Get("Source");
+		switch (strtolower(trim($externalScript->Get("EmbedLocation")))) {
+			case ScriptEmbedLocationOption::Head:
+				$this->headExternalScripts[$externalScript->Get("Source")] = $script;	
+				break;
+			case ScriptEmbedLocationOption::Bottom:
+			
+				break;
 		}
 	}
-	
+
 	public function RenderExternalScript($embedLocation) {
 		$scriptCollection = null;
 		
