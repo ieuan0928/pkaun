@@ -16,8 +16,6 @@ class ContainerControl extends ControlBase {
 	
 	public function AddControl(controlBase &$child) {
 		array_push($this->childControls, $child);
-		
-		//$this->AddExternalScripts($child->Get("ExternalScripts"));
 	}
 	
 	public function GetChildren($child) {
@@ -39,6 +37,12 @@ class ContainerControl extends ControlBase {
 			array_push($idChildren, $this->GetChildren($child));
 		}
 		return $idChildren;
+	}
+	
+	public function PreRender() {
+		foreach ($this->childControls as $child) {
+			$child->PreRender();
+		}
 	}
 	
 	public function Render() {

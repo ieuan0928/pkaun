@@ -10,6 +10,11 @@ class PageViewer extends ControlBase {
 	private $postVariable;
 	private $dieUrlParameter;
 	
+	private $pageToRender;
+	private $urlParameterToRender;
+	
+	private $urlKey;
+	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
 			case "urlparametercollection":
@@ -66,34 +71,40 @@ class PageViewer extends ControlBase {
 		}
 	}
 	
+	public function PreRender() {
+		unset($this->urlParameterToRender);
+		
+		$this->urlKey = '';
+		if (isset($_GET[$this->postVariable])) {
+			$this->urlKey = strtolower($_GET[$this->postVariable]);
+			
+			if (array_key_exists($this->urlKey, $this->urlParameterCollection)) {
+				$this->urlParameterToRender = $this->urlParameterCollection[$this->urlKey];
+				
+			}
+			
+			else if (isset($this->dieUrlParameter)) 
+				$this->urlParameterToRender = $this->dieUrlParameter;
+			
+		}
+		else $this->urlParameterToRender = $this->defaultUrlParameter;
+		
+		if (!is_null($this->urlParameterToRender)) {
+			require_once($this->urlParameterToRender->Get("PagePath"));
+			
+			$pageTypeName = $this->urlParameterToRender->Get("PageTypeName");
+			
+			$this->pageToRender = new $pageTypeName;
+			$this->pageToRender->CreateElements();
+			$this->pageToRender->PreRender();
+		}
+	}
+	
 	public function Render() {
 		echo "<div id='$this->identifier'>";
-		
-		$urlLocation = null;
-		$urlKey = '';
-		if(isset($_GET[$this->postVariable])) {
-			$urlKey = strtolower($_GET[$this->postVariable]);
 			
-			if (array_key_exists($urlKey, $this->urlParameterCollection)) {
-				$urlLocation = $this->urlParameterCollection[$urlKey]; 
-			}
-			else if (isset($this->dieUrlParameter)) {
-				$urlLocation = $this->dieUrlParameter;
-			}
-		}
-		else { $urlLocation = $this->defaultUrlParameter; }
-		
-		if (is_null($urlLocation)) {
-			echo "Undefined Page for '$this->postVariable=$urlKey'.";
-		}
-		else {
-			require_once($urlLocation->Get("PagePath"));
-			$pageTypeName = $urlLocation->Get("PageTypeName");
-			$pageToRender = new $pageTypeName();
-			
-			$pageToRender->CreateElements();
-			$pageToRender->Render();
-		}
+		if (is_null($this->urlParameterToRender)) echo "Undefined Page for '$this->postVariable=$this->urlKey'."; 
+		else $this->pageToRender->Render();
 
 		echo "</div>";
 	}

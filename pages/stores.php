@@ -19,10 +19,12 @@ require_once('/ezframework/uielements/textBlock.php');
 
 class Stores extends PageBase {
 	public function __construct() {
+		parent::__construct();
 		
+		$this->InitializeElements();
 	}
 	
-	public function CreateElements() {
+	private function InitializeElements() {
 		$this->panel1 = new Panel();
 		$this->panel2 = new Panel();
 		$this->panel3 = new Panel();
@@ -34,6 +36,7 @@ class Stores extends PageBase {
 		$this->panel9 = new Panel();
 		$this->panel10 = new Panel();
 		$this->panel11 = new Panel();
+		
 		$this->groupBox1 = new GroupBox();
 		$this->checkBox1 = new CheckBox();
 		$this->radioButton1 = new RadioButton();
@@ -49,6 +52,7 @@ class Stores extends PageBase {
 		$this->label_with_Content_3 = new Label();
 		$this->label_with_Content_4 = new Label();
 		$this->label_with_Content_5 = new Label();
+		
 		$this->logo = new Image();
 		$this->tab1 = new Tab();
 		$this->tab2 = new Tab();
@@ -57,7 +61,9 @@ class Stores extends PageBase {
 		$this->tab_container_1 = new TabContainer();
 		$this->tab_container = new TabContainer();
 		$this->text_block_1 = new TextBlock();
-		
+	}
+	
+	public function CreateElements() {	
 		$this->panel1->Set("identifier", "groupbox1_header");
 		$this->panel1->Set("Parent", $this->groupBox1->Get("Header"));
 			

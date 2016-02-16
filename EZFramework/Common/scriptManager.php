@@ -32,13 +32,12 @@ class ScriptManager {
 	}
 	
 	public function AddExternalScript(ExternalScript $externalScript) {
-		$externalScriptSource = $externalScript->Get("Source");
 		switch (strtolower(trim($externalScript->Get("EmbedLocation")))) {
 			case ScriptEmbedLocationOption::Head:
-				$this->headExternalScripts[$externalScript->Get("Source")] = $script;	
+				$this->headExternalScripts[$externalScript->Get("Source")] = $externalScript;	
 				break;
 			case ScriptEmbedLocationOption::Bottom:
-			
+				$this->bottomExternalScripts[$externalScript->Get("Source")] = $externalScript;
 				break;
 		}
 	}

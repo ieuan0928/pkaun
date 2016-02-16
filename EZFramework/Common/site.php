@@ -8,14 +8,20 @@ final class Site {
 	
 	private $helper = null;
 	public function Helper() {
-		if (is_null($this->helper)) $this->helper = new SiteHelper();
+		if (is_null($this->helper)) {
+			$this->helper = new SiteHelper();
+		}
 		
 		return $this->helper;
 	}
 	
 	private static $instance = null;
 	public static function Instance() {
-		if (is_null(Site::$instance)) Site::$instance = new Site();
+		
+		if (is_null(Site::$instance)) 
+		{
+			Site::$instance = new Site();
+		}
 		
 		return Site::$instance;
 	}
@@ -38,6 +44,7 @@ final class Site {
 	
 	public function Render(UIBase &$page) {
 		$page->CreateElements();
+		$page->PreRender();
 		
 		echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
 		echo '<html xmlns="http://www.w3.org/1999/xhtml">';
@@ -54,8 +61,7 @@ final class Site {
 		echo '<body>';
 		
 		$page->Render();
-		
-		
+
 		echo '</body>';
 		echo '</html>';
 	}

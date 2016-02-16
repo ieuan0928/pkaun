@@ -7,9 +7,9 @@ require_once('/ezframework/common/inlineScript.php');
 
 abstract class UIBase {	
 	public function Render() {}
+	public function PreRender() {}
 	
 	private $parentControl;
-
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {

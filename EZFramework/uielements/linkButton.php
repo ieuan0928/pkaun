@@ -6,6 +6,7 @@ require_once("/ezframework/enum/buttonLinkTarget.php");
 require_once("/ezframework/enum/scriptEmbedLocationOption.php");
 require_once("/ezframework/common/externalScript.php");
 require_once("/ezframework/common/inlineScript.php");
+require_once("/ezframework/common/site.php");
 
 class LinkButton extends ControlBase {
 	public function __construct() {
@@ -15,8 +16,8 @@ class LinkButton extends ControlBase {
 		$this->clientLinkURLHelper = new ExternalScript();
 		$this->clientLinkURLHelper->Set("Source", "ezframework/js/clientLinkURLHelper.js");
 		$this->clientLinkURLHelper->Set("EmbedLocation", ScriptEmbedLocationOption::Head);
-		
-		//$this->AddExternalScript($this->clientLinkURLHelper);
+
+		Site::Instance()->Helper()->Get("ScriptManager")->AddExternalScript($this->clientLinkURLHelper);	
 
 		$this->linkInlineScript = new InlineScript();
 	}
