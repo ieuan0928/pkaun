@@ -4,7 +4,7 @@ require_once('/ezframework/uielements/containerControl.php');
 require_once("/ezframework/enum/scriptEmbedLocationOption.php");
 require_once("/ezframework/common/externalScript.php");
 require_once("/ezframework/common/inlineScript.php");
-require_once("/ezframework/common/site.php");
+require_once("/EZFramework/site.php");
 
 class TabContainer extends ContainerControl {
 	public function __construct() {
