@@ -3,6 +3,7 @@
 require_once('/ezframework/common/siteHelper.php');
 require_once('/ezframework/uielements/uiBase.php');
 require_once('/ezframework/enum/scriptEmbedLocationOption.php');
+require_once('/ezframework/enum/styleEmbedLocationOption.php');
 
 final class Site {
 	
@@ -53,9 +54,10 @@ final class Site {
 		echo '<meta name="viewport" content="initial-scale =1.0,maximum-scale = 1.0" />';
 		
 		self::Instance()->Helper()->Get("scriptmanager")->RenderExternalScript(ScriptEmbedLocationOption::Head);
+		self::Instance()->Helper()->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
 
 		echo '<link rel="stylesheet" type="text/css" href="css/style.css" />';
-		echo '<link rel="stylesheet" type="text/css" href="css/stores.css" />';
+		//echo '<link rel="stylesheet" type="text/css" href="css/tab.css" />';
 		echo '<title>Title</title>';
 		echo '</head>';
 		echo '<body>';

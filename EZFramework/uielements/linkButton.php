@@ -6,7 +6,7 @@ require_once("/ezframework/enum/buttonLinkTarget.php");
 require_once("/ezframework/enum/scriptEmbedLocationOption.php");
 require_once("/ezframework/common/externalScript.php");
 require_once("/ezframework/common/inlineScript.php");
-require_once("/ezframework/common/site.php");
+require_once("/ezframework/site.php");
 
 class LinkButton extends ControlBase {
 	public function __construct() {

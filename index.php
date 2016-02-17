@@ -1,13 +1,14 @@
 <?php 
 
 session_start();
-
 $view = null;
 $viewPage = null;
 $sort = null;
 
 require_once('/EZFramework/site.php');
 require_once('/pages/main.php');
+
+//Site::Instance()->Helper()->StartSession();
 
 if (!isset($_SESSION["dbconfig"])) {
 	require_once('/ezframework/databaseConfig.php');
