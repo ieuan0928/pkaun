@@ -28,7 +28,7 @@ final class SiteHelper {
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
 			default:
-				die("Unble to identify Property Name.");
+				die("Unable to identify Property Name.");
 				return false;
 				break;
 		}

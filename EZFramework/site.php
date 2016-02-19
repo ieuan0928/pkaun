@@ -6,12 +6,14 @@ require_once('/ezframework/enum/scriptEmbedLocationOption.php');
 require_once('/ezframework/enum/styleEmbedLocationOption.php');
 
 final class Site {
-	
+	private function __construct() {
+		$this->helper = new SiteHelper();
+	}
 	private $helper = null;
 	public function Helper() {
-		if (is_null($this->helper)) {
-			$this->helper = new SiteHelper();
-		}
+		//if (is_null($this->helper)) {
+		//	$this->helper = new SiteHelper();
+		//}
 		
 		return $this->helper;
 	}

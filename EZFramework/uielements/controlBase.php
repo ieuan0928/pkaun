@@ -2,14 +2,19 @@
 
 require_once("/ezframework/uielements/uiBase.php");
 require_once("/ezframework/uielements/containerControl.php");
+require_once('/ezframework/uielements/common/anchor.php');
 
 abstract class ControlBase extends UIBase {
+	public function __construct() {
+		$this->anchor = new Anchor();
+	}
 
 	protected $className;
 	protected $identifier;
 	protected $width;
 	protected $height;
 	protected $name;
+	protected $anchor = null;
 	
 	protected $parentControl;
 	
@@ -26,6 +31,12 @@ abstract class ControlBase extends UIBase {
 				break;
 			case "parent":
 				return $this->parentControl;
+				break;
+			case "anchor":
+				//if (is_null($this->anchor)) {
+					//$this->anchor = new Anchor();
+				//}
+				return $this->anchor;
 				break;
 			default:
 				return parent::Get($propertyName);

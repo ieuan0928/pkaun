@@ -22,7 +22,7 @@ class TabContainer extends ContainerControl {
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		$this->tabStyle = new ExternalStyle();
-		$this->tabStyle->Set("source", "/css/tab.css");
+		$this->tabStyle->Set("source", "ezframework/css/tabBehaviorStyle.css");
 		$this->tabStyle->Set("embedlocation", StyleEmbedLocationOption::Head);
 		
 		Site::Instance()->Helper()->Get("stylemanager")->AddExternalStyle($this->tabStyle);

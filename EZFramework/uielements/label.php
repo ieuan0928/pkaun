@@ -5,6 +5,7 @@ require_once('/ezframework/uielements/controlBase.php');
 class Label extends ControlBase {
 	public function __construct() {
 		$this->content = new ContentControl();
+		parent::__construct();
 	}
 		
 	private $value;
@@ -40,6 +41,8 @@ class Label extends ControlBase {
 	}
 	
 	public function Render() {
+		$this->Get("anchor")->Get("top");
+		
 		$concat = "_label_container";
 		
 		echo "<div class='$this->className$concat' id='$this->identifier$concat'>";

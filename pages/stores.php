@@ -16,6 +16,8 @@ require_once('/datahelper/group.php');
 require_once('/ezframework/uielements/contentControl.php');
 require_once('/ezframework/enum/tagType.php');
 require_once('/ezframework/uielements/textBlock.php');
+require_once('/ezframework/uielements/sliderContainer.php');
+require_once('/ezframework/uielements/sliderControl.php');
 
 class Stores extends PageBase {
 	public function __construct() {
@@ -61,6 +63,8 @@ class Stores extends PageBase {
 		$this->tab_container_1 = new TabContainer();
 		$this->tab_container = new TabContainer();
 		$this->text_block_1 = new TextBlock();
+		
+		$this->slider_1 = new SliderContainer();
 	}
 	
 	public function CreateElements() {	
@@ -92,6 +96,12 @@ class Stores extends PageBase {
 		$this->textBox1->Set("classname", "class_textbox_1");
 		$this->textBox1->Set("name", "name_textbox_1");
 		$this->textBox1->Set("placeholder", "placeholder test");
+		
+		$this->label_1->Get("anchor")->Set("top", true);
+		/*echo $this->label_1->Get("anchor")->Set("left", true);
+		echo $this->label_1->Get("anchor")->Set("right", true);
+		echo $this->label_1->Get("anchor")->Set("bottom", true);*/
+		//$this->label_1->Get("anchor")->Get("top");
 		
 		$this->label_1->Set("identifier", "id_label_1");
 		$this->label_1->Set("classname", "class_labael_1");
@@ -257,6 +267,12 @@ class Stores extends PageBase {
 		// $this->panel3->Set("identifier", "igsuunniidkuno");
 		// $this->panel4->Set("identifier", "bilatniidkuno"); 
 		
+		$this->slider_1->Set("identifier", "slider_id_1");
+		$this->slider_1->Set("classname", "slider_class_1");
+		$this->slider_1->Set("parent", $this);
+		
+		
+		
 		return $this;
 	}
 	
@@ -295,6 +311,10 @@ class Stores extends PageBase {
 	private $text_block_1;
 	private $text_block_type_1;
 	private $textarea_1;
+	private $slider_1;
+	private $slide_1;
+	private $slide_2;
+	private $slide_3;
 }
 
 ?>
