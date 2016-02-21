@@ -41,11 +41,12 @@ class Main extends PageBase {
 		
 		$this->linkHome->Set("Content", "Home");
 		$this->linkHome->Set("Parent", $this);
+		$this->linkHome->Set("HyperLink", "?view=home");
 		
 		$this->linkStores->Set("Content", "Stores");
 		$this->linkStores->Set("Parent", $this);
-		
-	
+		$this->linkStores->Set("HyperLink", "?view=stores");
+
 		$this->contentPageViewer->Set("Parent", $this);
 		$this->contentPageViewer->Set("Identifier", "mainContentViewer");
 		$this->contentPageViewer->Set("PostVariable", "view");

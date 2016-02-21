@@ -26,6 +26,7 @@ class LinkButton extends ControlBase {
 	private $linkTarget;
 	private $clientLinkURLHelper;
 	private $linkInlineScript;
+	private $hyperLink = "#";
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -34,6 +35,9 @@ class LinkButton extends ControlBase {
 				break;
 			case "linktarget":
 				return $this->linkTarget;
+				break;
+			case "hyperlink":
+				return $this->hyperLink;
 				break;
 			default:
 				return parent::Get($propertyName);
@@ -51,6 +55,10 @@ class LinkButton extends ControlBase {
 				$this->linkTarget = $value;
 				return true;
 				break;
+			case "hyperlink":
+				$this->hyperLink = $value;
+				return true;
+				break;
 			default:
 				return parent::Set($propertyName, $value);
 				break;
@@ -58,11 +66,11 @@ class LinkButton extends ControlBase {
 	}
 	
 	public function Render() {
-		echo "<div id='igit'>"; 
+		echo "<a href='$this->hyperLink' id='igit'>"; 
 		
 		$this->content->Render();
 		
-		echo "</div>";
+		echo "</a>";
 	}
 }
 
