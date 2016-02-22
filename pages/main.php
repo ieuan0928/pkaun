@@ -39,10 +39,12 @@ class Main extends PageBase {
 		$this->dieUrlParameter->Set("PageTypeName", "ViewError");
 		$this->dieUrlParameter->Set("PagePath", "/pages/viewError.php");
 		
+		$this->linkHome->Set("Identifier", "linkhome");
 		$this->linkHome->Set("Content", "Home");
 		$this->linkHome->Set("Parent", $this);
 		$this->linkHome->Set("HyperLink", "?view=home");
 		
+		$this->linkStores->Set("Identifier", "linkstores");
 		$this->linkStores->Set("Content", "Stores");
 		$this->linkStores->Set("Parent", $this);
 		$this->linkStores->Set("HyperLink", "?view=stores");

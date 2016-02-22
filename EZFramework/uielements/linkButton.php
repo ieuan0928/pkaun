@@ -18,8 +18,6 @@ class LinkButton extends ControlBase {
 		$this->clientLinkURLHelper->Set("EmbedLocation", ScriptEmbedLocationOption::Head);
 
 		Site::Instance()->Helper()->Get("ScriptManager")->AddExternalScript($this->clientLinkURLHelper);	
-
-		$this->linkInlineScript = new InlineScript();
 	}
 	
 	private $content;
@@ -63,6 +61,13 @@ class LinkButton extends ControlBase {
 				return parent::Set($propertyName, $value);
 				break;
 		}
+	}
+	
+	public function PreRender() {
+		$this->linkInlineScript = new InlineScript();
+		$unique_id = "linkButton_" . $this->identifier;
+		$this->linkInlineScript->Set("UniqueID", $unique_id);
+		parent::AddInlineReadyScript($this->linkInlineScript);
 	}
 	
 	public function Render() {
