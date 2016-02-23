@@ -8,6 +8,7 @@ require_once('/ezframework/common/inlineScript.php');
 abstract class UIBase {	
 	public function Render() {}
 	public function PreRender() {}
+	public function PostRender() {}
 	
 	private $parentControl;
 	protected $inlineReadyScripts = Array();

@@ -51,6 +51,11 @@ class ContainerControl extends ControlBase {
 		}
 	}
 	
+	public function PostRender() {
+		foreach ($this->childControls as $child) {
+			$child->PostRender();
+		}
+	}
 }
 
 ?>
