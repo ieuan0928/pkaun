@@ -25,6 +25,7 @@ class LinkButton extends ControlBase {
 	private $clientLinkURLHelper;
 	private $linkInlineScript;
 	private $hyperLink = "#";
+	private $uniqueId;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -65,17 +66,25 @@ class LinkButton extends ControlBase {
 	
 	public function PreRender() {
 		$this->linkInlineScript = new InlineScript();
-		$unique_id = "linkButton_" . $this->identifier;
-		$this->linkInlineScript->Set("UniqueID", $unique_id);
+		$this->uniqueId = "linkButton_" . $this->identifier;
+		$this->linkInlineScript->Set("UniqueID", $this->uniqueId);
 		parent::AddInlineReadyScript($this->linkInlineScript);
 	}
 	
 	public function Render() {
-		echo "<a href='$this->hyperLink' id='igit'>"; 
+		echo "<a href='$this->hyperLink' id='$this->uniqueId'>"; 
 		
 		$this->content->Render();
 		
 		echo "</a>";
+	}
+	
+	public function PostRender() {
+		echo "<script>";
+		echo "$('#" . $this->uniqueId . "').ready(function() {";
+		echo "alert('test');";
+		echo "});";
+		echo "</script>";
 	}
 }
 
