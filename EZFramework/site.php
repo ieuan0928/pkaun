@@ -59,7 +59,7 @@ final class Site {
 		self::Instance()->Helper()->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
 
 		echo '<link rel="stylesheet" type="text/css" href="css/style.css" />';
-		//echo '<link rel="stylesheet" type="text/css" href="css/tab.css" />';
+		echo '<link rel="stylesheet" type="text/css" href="css/dummy.css" />';
 		echo '<title>Title</title>';
 		echo '</head>';
 		echo '<body>';

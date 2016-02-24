@@ -11,6 +11,7 @@ class Label extends ControlBase {
 	private $value;
 	private $header = "h1";
 	private $content;
+	private $top, $left, $right, $bottom;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -41,7 +42,10 @@ class Label extends ControlBase {
 	}
 	
 	public function Render() {
-		$this->Get("anchor")->Get("top");
+		$this->top = $this->Get("anchor")->Get("top");
+		$this->left = $this->Get("anchor")->Get("left");
+		$this->right = $this->Get("anchor")->Get("right");
+		$this->bottom = $this->Get("anchor")->Get("bottom");
 		
 		$concat = "_label_container";
 		

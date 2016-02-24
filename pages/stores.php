@@ -38,6 +38,7 @@ class Stores extends PageBase {
 		$this->panel9 = new Panel();
 		$this->panel10 = new Panel();
 		$this->panel11 = new Panel();
+		$this->panel12 = new Panel();
 		
 		$this->groupBox1 = new GroupBox();
 		$this->checkBox1 = new CheckBox();
@@ -97,16 +98,25 @@ class Stores extends PageBase {
 		$this->textBox1->Set("name", "name_textbox_1");
 		$this->textBox1->Set("placeholder", "placeholder test");
 		
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
 		$this->label_1->Get("anchor")->Set("top", true);
-		/*echo $this->label_1->Get("anchor")->Set("left", true);
-		echo $this->label_1->Get("anchor")->Set("right", true);
-		echo $this->label_1->Get("anchor")->Set("bottom", true);*/
-		//$this->label_1->Get("anchor")->Get("top");
+		$this->label_1->Get("anchor")->Set("left", false);
+		$this->label_1->Get("anchor")->Set("right", false);
+		$this->label_1->Get("anchor")->Set("bottom", false);
 		
 		$this->label_1->Set("identifier", "id_label_1");
 		$this->label_1->Set("classname", "class_labael_1");
 		$this->label_1->Set("value", "header 1 test");
 		$this->label_1->Set("header", "h1");
+		
+		$this->panel12->Set("identifier", "panel_12_id");
+		$this->panel12->Set("classname", "panel_12_class");
+		
+		$this->label_1->Set("parent", $this->panel12);
+		$this->panel12->Set("parent", $this);
+		
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		$this->comboBox_1->Set("identifier", "id_comboBox_1");
 		$this->comboBox_1->Set("classname", "class_comboBox_1");
@@ -167,7 +177,6 @@ class Stores extends PageBase {
 		
 		$this->checkBox1->Set("Parent", $this->panel2);
 		$this->radioButton1->Set("Parent", $this->panel2);
-		$this->label_1->Set("parent", $this);
 		$this->textBox1->Set("parent", $this);
 		$this->comboBox_1->Set("parent", $this);
 		$this->comboBox_2->Set("parent", $this);
@@ -287,6 +296,7 @@ class Stores extends PageBase {
 	private $panel9;
 	private $panel10;
 	private $panel11;
+	private $panel12;
 	private $checkBox1;
 	private $radioButton1;
 	private $textBox1;
