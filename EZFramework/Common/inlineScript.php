@@ -22,7 +22,7 @@ class InlineScript extends ScriptMapper {
 	}
 	
 	public function Set($propertyName, $value) {
-		switch (strtolower(trim($propertyName, $value))) {
+		switch (strtolower(trim($propertyName))) {
 			case "script":
 				$this->script = $value;
 				return true;

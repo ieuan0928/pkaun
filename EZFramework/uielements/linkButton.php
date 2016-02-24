@@ -6,7 +6,9 @@ require_once("/ezframework/enum/buttonLinkTarget.php");
 require_once("/ezframework/enum/scriptEmbedLocationOption.php");
 require_once("/ezframework/common/externalScript.php");
 require_once("/ezframework/common/inlineScript.php");
+require_once("/ezframework/uielements/pageViewer.php");
 require_once("/ezframework/site.php");
+
 
 class LinkButton extends ControlBase {
 	public function __construct() {
@@ -26,6 +28,7 @@ class LinkButton extends ControlBase {
 	private $linkInlineScript;
 	private $hyperLink = "#";
 	private $uniqueId;
+	private $targetViewer;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -38,6 +41,9 @@ class LinkButton extends ControlBase {
 			case "hyperlink":
 				return $this->hyperLink;
 				break;
+			//case "targetviewer":
+			//	return $this->targetViewer;
+			//	break;
 			default:
 				return parent::Get($propertyName);
 				break;
@@ -58,6 +64,14 @@ class LinkButton extends ControlBase {
 				$this->hyperLink = $value;
 				return true;
 				break;
+			case "targetviewer":
+				if (!$value instanceof PageViewer) {
+					die("Value must be of type PageViewer.");
+					return false;
+				}
+				$this->targetViewer = &$value;
+				return true;
+				break;
 			default:
 				return parent::Set($propertyName, $value);
 				break;
@@ -68,6 +82,8 @@ class LinkButton extends ControlBase {
 		$this->linkInlineScript = new InlineScript();
 		$this->uniqueId = "linkButton_" . $this->identifier;
 		$this->linkInlineScript->Set("UniqueID", $this->uniqueId);
+		$script = "$('#" . $this->uniqueId . "').EZAsyncLink();";
+		$this->linkInlineScript->Set("script", $script);
 		parent::AddInlineReadyScript($this->linkInlineScript);
 	}
 	
@@ -82,7 +98,9 @@ class LinkButton extends ControlBase {
 	public function PostRender() {
 		echo "<script>";
 		echo "$('#" . $this->uniqueId . "').ready(function() {";
-		echo "alert('test');";
+		echo "$('#" . $this->uniqueId . "').EZAsyncLink({";
+		echo '"PageViewerId":"' . $this->targetViewer->Get('identifier') . '"';
+		echo "});";
 		echo "});";
 		echo "</script>";
 	}

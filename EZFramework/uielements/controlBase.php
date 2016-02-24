@@ -68,10 +68,15 @@ abstract class ControlBase extends UIBase {
 					die("Parent must be of type ContainerControl.");
 					return false;
 				}
+				
+				break;
 			default:
 				return parent::Set($propertyName, $value);
 				break;
 		}
+	}
+	
+	public function PostRender() {
 	}
 }
 
