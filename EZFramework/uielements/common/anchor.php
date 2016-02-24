@@ -1,30 +1,27 @@
 <?php
 class Anchor {
 	public function __construct() {
-		/*$this->top = true;
-		$this->left = true;
-		$this->right = false;
-		$this->bottom = false;*/
+		
 	}
 	
-	private $top;
-	private $left;
-	private $right;
-	private $bottom; 
+	private $anchorTop;
+	private $anchorLeft;
+	private $anchorRight;
+	private $anchorBottom; 
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
-			case "top":
-				return $this->top;
+			case "anchortop":
+				return $this->anchorTop;
 				break;
-			case "left":
-				return $this->left;
+			case "anchorleft":
+				return $this->anchorLeft;
 				break;
-			case "right":
-				return $this->right;
+			case "anchorright":
+				return $this->anchorRight;
 				break;
-			case "bottom":
-				return $this->bottom;
+			case "anchorbottom":
+				return $this->anchorBottom;
 				break;
 			default:
 				die("Unable to identify Property Name.");
@@ -35,20 +32,20 @@ class Anchor {
 	
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
-			case "top":
-				$this->top = $value;
+			case "anchortop":
+				$this->anchorTop = $value;
 				return true;
 				break;
-			case "left":
-				$this->left = $value;
+			case "anchorleft":
+				$this->anchorLeft = $value;
 				return true;
 				break;
-			case "right":
-				$this->right = $value;
+			case "anchorright":
+				$this->anchorRight = $value;
 				return true;
 				break;
-			case "bottom":
-				$this->bottom = $value;
+			case "anchorbottom":
+				$this->anchorBottom = $value;
 				return true;
 				break;
 			default:

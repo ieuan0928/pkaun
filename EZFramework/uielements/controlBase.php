@@ -3,18 +3,22 @@
 require_once("/ezframework/uielements/uiBase.php");
 require_once("/ezframework/uielements/containerControl.php");
 require_once('/ezframework/uielements/common/anchor.php');
+require_once("/ezframework/uielements/attributes/margin.php");
+require_once("/ezframework/uielements/attributes/size.php");
 
 abstract class ControlBase extends UIBase {
 	public function __construct() {
 		$this->anchor = new Anchor();
+		$this->margin = new Margin();
+		$this->size = new Size();
 	}
 
 	protected $className;
 	protected $identifier;
-	protected $width;
-	protected $height;
 	protected $name;
 	protected $anchor = null;
+	protected $margin = null;
+	protected $size = null;
 	
 	protected $parentControl;
 	
@@ -37,6 +41,12 @@ abstract class ControlBase extends UIBase {
 					//$this->anchor = new Anchor();
 				//}
 				return $this->anchor;
+				break;
+			case "margin":
+				return $this->margin;
+				break;
+			case "size":
+				return $this->size;
 				break;
 			default:
 				return parent::Get($propertyName);

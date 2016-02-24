@@ -1,8 +1,19 @@
 #panel_12_id
 {
+	position: relative;
 	background-color: red;
-	width: 800px;
+	width: 1000px;
 	height: 800px;
+}
+
+#id_label_1_label_container
+{
+	background-color: blue;
+	/*width: 200px;
+	height: 50px;
+	margin-top: 100px;
+	margin-left: 200px;*/	
+	
 }
 
 /**********************************************************anchor styles*********************************************************************/
@@ -14,7 +25,7 @@
 
 .left
 {
-
+	
 }
 
 .bottom
