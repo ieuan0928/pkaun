@@ -6,11 +6,9 @@
 		
 		return this.each(function() {
 			$(this).click(function(e) {
-				
-				$("#" + settings.PageViewerId).html("test igit..");
 				window.history.pushState('', '', $(this).attr("href"));
-				
-				
+				// to do ajax
+				$("#" + settings.PageViewerId).html("test igit..");
 				return false; 
 			});
 		});
