@@ -41,9 +41,9 @@ class LinkButton extends ControlBase {
 			case "hyperlink":
 				return $this->hyperLink;
 				break;
-			//case "targetviewer":
-			//	return $this->targetViewer;
-			//	break;
+			case "targetviewer":
+				return $this->targetViewer;
+				break;
 			default:
 				return parent::Get($propertyName);
 				break;

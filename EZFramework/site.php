@@ -11,10 +11,6 @@ final class Site {
 	}
 	private $helper = null;
 	public function Helper() {
-		//if (is_null($this->helper)) {
-		//	$this->helper = new SiteHelper();
-		//}
-		
 		return $this->helper;
 	}
 	
