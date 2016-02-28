@@ -1,16 +1,16 @@
 <?php
 
-require_once("/ezframework/uielements/controlBase.php");
 require_once("/ezframework/uielements/contentControl.php");
 require_once("/ezframework/enum/buttonLinkTarget.php");
 require_once("/ezframework/enum/scriptEmbedLocationOption.php");
 require_once("/ezframework/common/externalScript.php");
 require_once("/ezframework/common/inlineScript.php");
 require_once("/ezframework/uielements/pageViewer.php");
+require_once("/ezframework/uielements/postVariable.php");
 require_once("/ezframework/site.php");
 
 
-class LinkButton extends ControlBase {
+class LinkButton extends PostVariable {
 	public function __construct() {
 		$this->content = new ContentControl();
 		$this->linkTarget = ButtonLinkTarget::PageViewer;
@@ -26,10 +26,10 @@ class LinkButton extends ControlBase {
 	private $linkTarget;
 	private $clientLinkURLHelper;
 	private $linkInlineScript;
-	private $hyperLink = "#";
 	private $uniqueId;
 	private $targetViewer;
-	
+	private $urlValue;
+
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
 			case "content":
@@ -38,11 +38,11 @@ class LinkButton extends ControlBase {
 			case "linktarget":
 				return $this->linkTarget;
 				break;
-			case "hyperlink":
-				return $this->hyperLink;
-				break;
 			case "targetviewer":
 				return $this->targetViewer;
+				break;
+			case "urlvalue":
+				return $this->urlValue;
 				break;
 			default:
 				return parent::Get($propertyName);
@@ -60,10 +60,6 @@ class LinkButton extends ControlBase {
 				$this->linkTarget = $value;
 				return true;
 				break;
-			case "hyperlink":
-				$this->hyperLink = $value;
-				return true;
-				break;
 			case "targetviewer":
 				if (!$value instanceof PageViewer) {
 					die("Value must be of type PageViewer.");
@@ -72,10 +68,25 @@ class LinkButton extends ControlBase {
 				$this->targetViewer = &$value;
 				return true;
 				break;
+			case "urlvalue":
+				$this->urlValue = $value;
+				return true;
+				break;
 			default:
 				return parent::Set($propertyName, $value);
 				break;
 		}
+	}
+	
+	private function createHyperLink($postVariable, $urlValue) {
+		
+		$result = '';
+		
+		$parameters = $_GET;
+		
+		$parameters[$postVariable] = $urlValue;
+		
+		return "?" . http_build_query($parameters);
 	}
 	
 	public function PreRender() {
@@ -88,8 +99,9 @@ class LinkButton extends ControlBase {
 	}
 	
 	public function Render() {
-		echo "<a href='$this->hyperLink' id='$this->uniqueId'>"; 
-		
+		$hyperLink = $this->createHyperLink($this->postVariable, $this->urlValue);
+		echo "<a href='$hyperLink' id='$this->uniqueId'>"; 
+	
 		$this->content->Render();
 		
 		echo "</a>";
@@ -100,6 +112,8 @@ class LinkButton extends ControlBase {
 		echo "$('#" . $this->uniqueId . "').ready(function() {";
 		echo "$('#" . $this->uniqueId . "').EZAsyncLink({";
 		echo '"PageViewerId":"' . $this->targetViewer->Get('identifier') . '"';
+		echo ', "Parameter": "' . $this->postVariable . '"';
+		echo ', "ParamValue": "' . $this->urlValue . '"';
 		echo "});";
 		echo "});";
 		echo "</script>";

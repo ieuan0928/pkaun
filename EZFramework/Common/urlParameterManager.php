@@ -14,12 +14,12 @@ class URLParameterManager {
 	
 	private $urlParameterArray = Array();
 
-	public function SumbitURLParameter(string $urlParameter, URLParameterMapper $urlParameterMapper) {
+	public function SumbitURLParameter($urlParameter, URLParameterMapper $urlParameterMapper) {
 		if (!isset($this->urlParameterArray[$urlParameter]) || is_null($this->urlParameterArray)) 
 			$this->urlParameterArray[$urlParameter] = Array();
 		
 		$urlParameter = &$this->urlParameterArray[$urlParameter];
-		$urlValue = $urlParameterMapper->Get("URLValue");
+		$urlValue = strtolower(trim($urlParameterMapper->Get("URLValue")));
 		if (!isset($urlParameter[$urlValue]) || is_null($urlParameter[$urlValue])) 
 			$urlParameter[$urlValue] = Array();
 			
@@ -28,6 +28,10 @@ class URLParameterManager {
 		$urlParameterValueMapper[URLParameterKeys::URLValue] = $urlParameterMapper->Get("URLValue");
 		$urlParameterValueMapper[URLParameterKeys::PageTypeName] = $urlParameterMapper->Get("PageTypeName");
 		$urlParameterValueMapper[URLParameterKeys::PagePath] = $urlParameterMapper->Get("PagePath");
+	}
+	
+	public function GetURLParameter($urlParameter, $urlValue) {
+		return $this->urlParameterArray[$urlParameter][$urlValue];
 	}
 	
 }

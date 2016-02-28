@@ -1,13 +1,13 @@
 <?php
 
-require_once('/EZFramework/uielements/controlBase.php');
+require_once('/EZFramework/uielements/postVariable.php');
 require_once('/EZFramework/common/urlParameterMapper.php');
+require_once('/EZFramework/site.php');
 
-class PageViewer extends ControlBase {
+class PageViewer extends PostVariable {
 	
 	private $urlParameterCollection = Array();
 	private $defaultUrlParameter;
-	private $postVariable;
 	private $dieUrlParameter;
 	
 	private $pageToRender;
@@ -22,9 +22,6 @@ class PageViewer extends ControlBase {
 				break;
 			case "defaulturlparameter":
 				return $this->defaultUrlParameter;
-				break;
-			case "postvariable":
-				return $this->postVariable;
 				break;
 			case "dieurlparameter":
 				return $this->dieUrlParameter;
@@ -52,9 +49,6 @@ class PageViewer extends ControlBase {
 				}
   
 				break;
-			case "postvariable":
-				$this->postVariable = $value;
-				return true;
 			case "dieurlparameter":
 				if ($value instanceof URLParameterMapper) {
 					$this->dieUrlParameter = &$value;
@@ -71,7 +65,15 @@ class PageViewer extends ControlBase {
 		}
 	}
 	
+	private function ManageURLParameters() {
+		foreach ($this->urlParameterCollection as $urlParameter) {
+			Site::Instance()->Helper()->Get("URLParameterManager")->SumbitURLParameter((string)$this->postVariable, $urlParameter);
+		}
+	}
+	
 	public function PreRender() {
+		$this->ManageURLParameters();
+		
 		unset($this->urlParameterToRender);
 		
 		$this->urlKey = '';
