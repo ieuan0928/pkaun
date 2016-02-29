@@ -7,6 +7,7 @@ require_once('/ezframework/enum/styleEmbedLocationOption.php');
 
 final class Site {
 	private function __construct() {
+		session_start();
 		$this->helper = new SiteHelper();
 	}
 	private $helper = null;

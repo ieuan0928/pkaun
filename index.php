@@ -1,6 +1,5 @@
 <?php 
 
-session_start();
 $view = null;
 $viewPage = null;
 $sort = null;
@@ -8,7 +7,6 @@ $sort = null;
 require_once('/EZFramework/site.php');
 require_once('/pages/main.php');
 
-//Site::Instance()->Helper()->StartSession();
 
 if (!isset($_SESSION["dbconfig"])) {
 	require_once('/ezframework/databaseConfig.php');
@@ -22,7 +20,7 @@ if (!isset($_SESSION["dbconfig"])) {
 	$_SESSION["dbconfig"] = serialize($dbConfig);
 }
 
-Site::Instance()->Helper()->StartSession();
+
 $testmain = new Main();
 Site::Instance()->Render($testmain);
 
