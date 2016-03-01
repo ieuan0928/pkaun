@@ -11,8 +11,6 @@
 			$(this).click(function(e) {
 				$.ajax({
 					"method": "POST"
-					//, "url" : "ezframework/asyncIndex.php"
-					, "url" : "asyncIndex.php"
 					, "data" : { Parameter : settings.Parameter, ParamValue : settings.ParamValue }
 					, "success": function(data) {
 						$("#" + settings.PageViewerId).html(data);

@@ -42,6 +42,23 @@ final class Site {
 	public function Set($propertyName, $value) {
 	}
 	
+	public function RenderChildPageFromURLParameter($parameter, $paramValue ) {
+		require_once('/ezframework/enum/urlParameterKeys.php');
+
+		$urlParameterManager = Site::Instance()->Helper()->Get("URLParameterManager");
+		$urlParameterMapper = $urlParameterManager->GetURLParameter($_POST["Parameter"], $_POST["ParamValue"]);
+
+		$PageTypeName = $urlParameterMapper[URLParameterKeys::PageTypeName];
+		$PagePath = $urlParameterMapper[URLParameterKeys::PagePath];
+
+		require_once($PagePath);
+		$pageToRender = new $PageTypeName;
+
+		$pageToRender->CreateElements();
+		$pageToRender->PreRender();
+		$pageToRender->Render();
+	}
+	
 	public function Render(UIBase &$page) {
 		$page->CreateElements();
 		$page->PreRender();
