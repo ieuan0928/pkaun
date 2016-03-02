@@ -2,8 +2,9 @@
 
 require_once('/ezframework/enum/scriptEmbedLocationOption.php');
 require_once('/ezframework/common/externalScript.php');
+require_once('/ezframework/common/externalSourceManager.php');
 
-class ScriptManager {	
+class ScriptManager extends ExternalSourceManager {	
 	private $headExternalScripts = Array();
 	private $bottomExternalScripts = Array();
 	
@@ -16,8 +17,7 @@ class ScriptManager {
 				return $this->bottomExternalScripts;
 				break;
 			default:
-				die("Unable to identify Property Name.");
-				return null;
+				return parent::Get($propertyName);
 				break;
 		}
 	}
@@ -25,8 +25,7 @@ class ScriptManager {
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
 			default:
-				die("Unable to identify Property Name.");
-				return false;
+				return parent::Set($propertyName, $value);
 				break;
 		}
 	}
@@ -55,7 +54,7 @@ class ScriptManager {
 		}
 		
 		foreach ($scriptCollection as $externalScript) {
-			echo '<script type="text/javascript" src="' . $externalScript->Get('Source') . '"></script>';
+			echo '<script type="text/javascript" src="' . ($this->isSubPage ? "../" : "") . $externalScript->Get('Source') . '"></script>';
 		}
 	}
 }

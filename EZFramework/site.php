@@ -27,6 +27,7 @@ final class Site {
 	}
 
 	private $defaultTitle = null;
+	private $isSubPage = false;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -40,6 +41,15 @@ final class Site {
 	}
 	
 	public function Set($propertyName, $value) {
+		switch (strtolower(trim($propertyName))) {
+			case "issubpage":
+				$this->isSubPage = $value;
+				
+				$this->helper->Get("ScriptManager")->Set("IsSubPage", $value);
+				
+				return true;
+				break;
+		}
 	}
 	
 	public function RenderChildPageFromURLParameter($parameter, $paramValue ) {
@@ -69,8 +79,8 @@ final class Site {
 		echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 		echo '<meta name="viewport" content="initial-scale =1.0,maximum-scale = 1.0" />';
 		
-		self::Instance()->Helper()->Get("scriptmanager")->RenderExternalScript(ScriptEmbedLocationOption::Head);
-		self::Instance()->Helper()->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
+		$this->helper->Get("scriptmanager")->RenderExternalScript(ScriptEmbedLocationOption::Head);
+		$this->helper->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
 
 		echo '<link rel="stylesheet" type="text/css" href="css/style.css" />';
 		
