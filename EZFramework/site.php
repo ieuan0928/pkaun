@@ -73,7 +73,10 @@ final class Site {
 		self::Instance()->Helper()->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
 
 		echo '<link rel="stylesheet" type="text/css" href="css/style.css" />';
+		
 		echo '<link rel="stylesheet" type="text/css" href="css/dummy.css" />';
+		echo '<script type="text/javascript" src="/js/dummyanchor.js"></script>';
+		
 		echo '<title>Title</title>';
 		echo '</head>';
 		echo '<body>';

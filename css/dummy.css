@@ -18,22 +18,22 @@
 
 /**********************************************************anchor styles*********************************************************************/
 
-.top
+.anchorTop
 {
-
+	position: absolute;
 }
 
-.left
+.anchorLeft
 {
-	
+	position: absolute;
 }
 
-.bottom
+.anchorBottom
 {
-
+	position: absolute;
 }
 
-.right
+.anchorRight
 {
-
+	position: absolute;
 }

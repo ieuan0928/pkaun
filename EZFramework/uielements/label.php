@@ -11,8 +11,7 @@ class Label extends ControlBase {
 	private $value;
 	private $header = "h1";
 	private $content;
-	private $anchorTop, $anchorLeft, $anchorRight, $anchorBottom, $top, $left, $right, $bottom, $marginLeft, $marginRight, $marginTop, $marginBottom;
-	private $width, $height;
+	private $anchorTop, $anchorLeft, $anchorRight, $anchorBottom, $top, $left, $right, $bottom, $marginLeft, $marginRight, $marginTop, $marginBottom, $width, $height;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -44,6 +43,8 @@ class Label extends ControlBase {
 	
 	public function Render() {
 		$concat = "_label_container";
+		$anchor_active = 0;
+		$anchor_base_class = "anchored_element";
 		$class_append = "";
 		$style_append = "";
 		
@@ -52,6 +53,27 @@ class Label extends ControlBase {
 		$this->anchorRight = $this->Get("anchor")->Get("anchorright");
 		$this->anchorBottom = $this->Get("anchor")->Get("anchorbottom");
 		
+		if($this->anchorTop == 1)
+		{
+			$anchor_active = 1;
+			$class_append .= " anchorTop";
+		}
+		if($this->anchorRight == 1)
+		{
+			$anchor_active = 1;
+			$class_append .= " anchorRight";
+		}
+		if($this->anchorLeft == 1)
+		{
+			$anchor_active = 1;
+			$class_append .= " anchorLeft";
+		}
+		if($this->anchorBottom == 1)
+		{
+			$anchor_active = 1;
+			$class_append .= " anchorBottom";
+		}
+
 		$this->top = $this->Get("margin")->Get("top");
 		$this->left = $this->Get("margin")->Get("left");
 		$this->right = $this->Get("margin")->Get("right");
@@ -65,28 +87,64 @@ class Label extends ControlBase {
 		$this->width = $this->Get("size")->Get("width");
 		$this->height = $this->Get("size")->Get("height");
 		
+		$style_append .= "style='";
+		
+		if(!empty($this->top))
+		{
+			$style_append .= " top:" . $this->top . ";";
+		}
+		if(!empty($this->left))
+		{
+			$style_append .= " left:" . $this->left . ";";
+		}
+		if(!empty($this->right))
+		{
+			$style_append .= " right:" . $this->right . ";";
+		}
+		if(!empty($this->bottom))
+		{
+			$style_append .= " bottom:" . $this->bottom . ";";
+		}
+		
+		if(!empty($this->marginTop))
+		{
+			$style_append .= " margin-top:" . $this->marginTop . ";";
+		}
+		if(!empty($this->marginLeft))
+		{
+			$style_append .= " margin-left:" . $this->marginLeft . ";";
+		}
+		if(!empty($this->marginRight))
+		{
+			$style_append .= " margin-right:" . $this->marginRight . ";";
+		}
+		if(!empty($this->marginBottom))
+		{
+			$style_append .= " margin-bottom:" . $this->marginBottom . ";";
+		}
+							
+		if(!empty($this->width))
+		{
+			$style_append .= " width:" . $this->width . ";";
+		}
+		if(!empty($this->height))
+		{
+			$style_append .= " height:" . $this->height . ";";
+		}		
+							
+		$style_append .= " '";
+		
 		echo "<div class='$this->className$concat";
-		
-		if($this->anchorTop == 1)
-		{
-			$class_append .= " top";
-		}
-		if($this->anchorRight == 1)
-		{
-			$class_append .= " right";
-		}
-		if($this->anchorLeft == 1)
-		{
-			$class_append .= " left";
-		}
-		if($this->anchorBottom == 1)
-		{
-			$class_append .= " bottom";
-		}
-		
 		echo $class_append;
 		
-		echo "' id='$this->identifier$concat'>";
+		if($anchor_active == 1)
+		{
+			echo " " . $anchor_base_class;
+		}
+		
+		echo "' ";
+		echo $style_append;
+		echo "id='$this->identifier$concat'>";
 		echo "<$this->header id='$this->identifier' class='$this->className'>$this->value</$this->header>"; 
 		$this->content->Render(); 
 		echo "</div>";

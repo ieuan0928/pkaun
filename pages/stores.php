@@ -100,16 +100,16 @@ class Stores extends PageBase {
 		
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
-		$this->label_1->Get("anchor")->Set("anchortop", true);
+		$this->label_1->Get("anchor")->Set("anchortop", false);
 		$this->label_1->Get("anchor")->Set("anchorleft", true);
-		$this->label_1->Get("anchor")->Set("anchorright", true);
-		$this->label_1->Get("anchor")->Set("anchorbottom", true);
+		$this->label_1->Get("anchor")->Set("anchorright", false);
+		$this->label_1->Get("anchor")->Set("anchorbottom", false);
 		
-		$this->label_1->Get("margin")->Set("marginleft", "100px");
-		$this->label_1->Get("margin")->Set("margintop", "100px");
+		$this->label_1->Get("margin")->Set("marginleft", "200px");
+		$this->label_1->Get("margin")->Set("margintop", "50px");
 		
-		$this->label_1->Get("size")->Set("height", "200px");
-		$this->label_1->Get("size")->Set("width", "100px");
+		$this->label_1->Get("size")->Set("height", "50px");
+		$this->label_1->Get("size")->Set("width", "200px");
 		
 		$this->label_1->Set("identifier", "id_label_1");
 		$this->label_1->Set("classname", "class_labael_1");
