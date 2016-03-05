@@ -1,9 +1,10 @@
 <?php 
 
 require_once('/ezframework/enum/styleEmbedLocationOption.php');
+require_once('/ezframework/common/externalSourceManager.php');
 require_once('/ezframework/common/externalStyle.php');
 
-class StyleManager {	
+class StyleManager extends ExternalSourceManager {	
 	private $headExternalStyles = Array();
 	private $bottomExternalStyles = Array();
 	
@@ -16,8 +17,7 @@ class StyleManager {
 				return $this->bottomExternalStyles;
 				break;
 			default:
-				die("Unable to identify Property Name.");
-				return null;
+				return parent::Get($propertyName);
 				break;
 		}
 	}
@@ -25,8 +25,7 @@ class StyleManager {
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
 			default:
-				die("Unable to identify Property Name.");
-				return false;
+				return parent::Set($propertyName, $value);
 				break;
 		}
 	}
@@ -55,7 +54,7 @@ class StyleManager {
 		}
 		
 		foreach ($styleCollection as $externalStyle) {
-			echo '<link rel="stylesheet" type="text/css" href="' . $externalStyle->Get('Source') . '"></link>';
+			echo '<link rel="stylesheet" type="text/css" href="' . ($this->isSubPage ? "../" : "") . $externalStyle->Get('Source') . '"></link>';
 		}
 	}
 }

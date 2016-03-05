@@ -46,6 +46,7 @@ final class Site {
 				$this->isSubPage = $value;
 				
 				$this->helper->Get("ScriptManager")->Set("IsSubPage", $value);
+				$this->helper->Get("StyleManager")->Set("IsSubPage", $value);
 				
 				return true;
 				break;
@@ -66,6 +67,10 @@ final class Site {
 
 		$pageToRender->CreateElements();
 		$pageToRender->PreRender();
+		
+		$this->helper->Get("scriptmanager")->RenderExternalScript(ScriptEmbedLocationOption::Head);
+		$this->helper->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
+		
 		$pageToRender->Render();
 	}
 	
@@ -78,18 +83,16 @@ final class Site {
 		echo '<head>';
 		echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 		echo '<meta name="viewport" content="initial-scale =1.0,maximum-scale = 1.0" />';
-		
-		$this->helper->Get("scriptmanager")->RenderExternalScript(ScriptEmbedLocationOption::Head);
-		$this->helper->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
-
 		echo '<link rel="stylesheet" type="text/css" href="css/style.css" />';
-		
 		echo '<link rel="stylesheet" type="text/css" href="css/dummy.css" />';
 		echo '<script type="text/javascript" src="/js/dummyanchor.js"></script>';
 		
 		echo '<title>Title</title>';
 		echo '</head>';
 		echo '<body>';
+		
+		$this->helper->Get("scriptmanager")->RenderExternalScript(ScriptEmbedLocationOption::Head);
+		$this->helper->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
 		
 		$page->Render();
 
