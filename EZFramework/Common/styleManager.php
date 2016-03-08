@@ -54,7 +54,7 @@ class StyleManager extends ExternalSourceManager {
 		}
 		
 		foreach ($styleCollection as $externalStyle) {
-			echo '<link rel="stylesheet" type="text/css" href="' . ($this->isSubPage ? "../" : "") . $externalStyle->Get('Source') . '"></link>';
+			echo '<link rel="stylesheet" type="text/css" href="' . ($this->isMainIndex ? "" : "../") . $externalStyle->Get('Source') . '"></link>';
 		}
 	}
 }

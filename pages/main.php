@@ -4,6 +4,8 @@ require_once('/ezframework/uielements/pageBase.php');
 require_once('/ezframework/uielements/pageViewer.php');
 require_once('/ezframework/uielements/linkButton.php');
 require_once('/ezframework/common/urlParameterMapper.php');
+require_once('/ezframework/common/externalStyle.php');
+require_once('/ezframework/enum/styleEmbedLocationOption.php');
 
 class Main extends PageBase {
 	public function __construct() {
@@ -18,6 +20,12 @@ class Main extends PageBase {
 		$this->dieUrlParameter = new URLParameterMapper();
 		$this->linkHome = new LinkButton();
 		$this->linkStores = new LinkButton();
+		
+		$this->mainStyle = new ExternalStyle();
+		$this->mainStyle->Set("Source", "css/style.css");
+		$this->mainStyle->Set("EmbedLocation", StyleEmbedLocationOption::Head);
+		
+		Site::Instance()->Helper()->Get("StyleManager")->AddExternalStyle($this->mainStyle);
 	}
 	
 	private $contentPageViewer;
@@ -26,6 +34,8 @@ class Main extends PageBase {
 	private $dieUrlParameter;
 	private $linkHome;
 	private $linkStores;
+	
+	private $mainStyle;
 	
 	public function CreateElements() {
 		$this->homeUrlParameter->Set("URLValue", "Home");

@@ -27,12 +27,19 @@ final class Site {
 	}
 
 	private $defaultTitle = null;
-	private $isSubPage = false;
+	private $isMainIndex = true;
+	private $isFullPageRequest = true;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
 			case "defaulttitle":
 				return $this->defaultTitle;
+				break;
+			case "ismainindex":
+				return $this->isMainIndex;
+				break;
+			case "isfullpagerequest":
+				return $this->isFullPageRequest;
 				break;
 			default:
 				die('Unable to identify Property Name.');
@@ -42,13 +49,18 @@ final class Site {
 	
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
-			case "issubpage":
-				$this->isSubPage = $value;
-				
-				$this->helper->Get("ScriptManager")->Set("IsSubPage", $value);
-				$this->helper->Get("StyleManager")->Set("IsSubPage", $value);
-				
+			case "ismainindex":
+				$this->isMainIndex = $value;			
+				$this->helper->Get("ScriptManager")->Set("IsMainIndex", $value);
+				$this->helper->Get("StyleManager")->Set("IsMainIndex", $value);
 				return true;
+				break;
+			case "isfullpagerequest":
+				$this->isFullPageRequest = $value;
+				return true;
+				break;
+			default:
+				die('Unable to identify Property Name.');
 				break;
 		}
 	}
@@ -83,7 +95,6 @@ final class Site {
 		echo '<head>';
 		echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 		echo '<meta name="viewport" content="initial-scale =1.0,maximum-scale = 1.0" />';
-		echo '<link rel="stylesheet" type="text/css" href="css/style.css" />';
 		echo '<link rel="stylesheet" type="text/css" href="css/dummy.css" />';
 		echo '<script type="text/javascript" src="/js/dummyanchor.js"></script>';
 		

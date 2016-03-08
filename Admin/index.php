@@ -12,10 +12,12 @@ else {
 set_include_path(get_include_path() . PATH_SEPARATOR . $include_path); 
 
 require_once('/ezframework/site.php');
-Site::Instance()->Set("IsSubPage", true);
+Site::Instance()->Set("IsMainIndex", false);
 
-if (isset($_POST["Parameter"]) && isset($_POST["ParamValue"])) 
+if (isset($_POST["Parameter"]) && isset($_POST["ParamValue"])) {
+	Site::Instance()->Set("IsFullPageRequest", false);
 	Site::Instance()->RenderChildPageFromURLParameter($_POST["Parameter"], $_POST["ParamValue"]);
+}
 else {
 	require_once('/pages/main.php');
 	

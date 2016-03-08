@@ -54,7 +54,7 @@ class ScriptManager extends ExternalSourceManager {
 		}
 		
 		foreach ($scriptCollection as $externalScript) {
-			echo '<script type="text/javascript" src="' . ($this->isSubPage ? "../" : "") . $externalScript->Get('Source') . '"></script>';
+			echo '<script type="text/javascript" src="' . ($this->isMainIndex ? "" : "../") . $externalScript->Get('Source') . '"></script>';
 		}
 	}
 }

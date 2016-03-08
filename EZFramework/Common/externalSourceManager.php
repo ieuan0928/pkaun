@@ -2,12 +2,12 @@
 
 class ExternalSourceManager {
 	
-	protected $isSubPage = false;
+	protected $isMainIndex = true;
 	
 	public function Get($propertyName) {
 		switch(strtolower(trim($propertyName))) {
-			case "issubpage":
-				return $this->isSubPage;
+			case "ismainindex":
+				return $this->isMainIndex;
 				break;
 			default:
 				die("Unable to identify Property Name.");
@@ -18,8 +18,8 @@ class ExternalSourceManager {
 	
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
-			case "issubpage":
-				$this->isSubPage = $value;
+			case "ismainindex":
+				$this->isMainIndex = $value;
 				return true;
 				break;
 			default:
