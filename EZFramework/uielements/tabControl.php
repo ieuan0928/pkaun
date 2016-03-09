@@ -70,7 +70,6 @@ class Tab extends ControlBase {
 	
 	public function Render() {
 		
-		//echo "<a href='https://www.google.com' class='tempa'>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a>";
 		echo "<div id='$this->identifier' class='$this->className'>";
 		
 		$this->headerPanel->Render();

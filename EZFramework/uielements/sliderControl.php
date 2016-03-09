@@ -1,6 +1,5 @@
 <?php
-
-require_once('/ezframework/uielements/controlBase.php');
+require_once('/ezframework/uielements/contentControl.php');
 require_once('/ezframework/uielements/panel.php');
 
 require_once("/ezframework/enum/scriptEmbedLocationOption.php");
@@ -14,11 +13,13 @@ require_once("/EZFramework/site.php");
 class SliderControl extends controlBase {
 
 	public function __construct() {
-		
+		$this->content = new ContentControl();
 	}
 	
 	private $slideHelper;
 	private $slideStyle;
+	
+	private $content;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
@@ -30,10 +31,24 @@ class SliderControl extends controlBase {
 	
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
+			case "content":
+				$this->content->Set("content", $value);
+				return true;
+				break;
 			default:
 				return parent::Set($propertyName, $value);
 				break;	
 		}
+	}
+	
+	public function Render() {
+		$concat = "_slide_container";
+		
+		echo "<div id='$this->identifier' class='$this->className'>";
+		
+		$this->content->Render(); 
+		
+		echo "</div>";
 	}
 }
 

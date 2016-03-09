@@ -17,13 +17,26 @@ class SliderContainer extends containerControl {
 	
 	private $sliderHelper;
 	private $sliderStyle;
+	private $slides = array();
 	
 	public function Get($propertyName) {
 		return parent::Get($propertyName);
 	}
 	
 	public function Set($propertyName, $value) {
-		return parent::Set($propertyName, $value);
+		switch (strtolower(trim($propertyName))) {
+			case "add_slide":
+				$this->addSlide($value);
+				return true;
+				break;
+			default:
+				return parent::Set($propertyName, $value);
+		}
+	}
+	
+	public function addSlide($slide)
+	{
+		array_push($this->slides, $slide);
 	}
 	
 	public function Render() {
@@ -31,8 +44,14 @@ class SliderContainer extends containerControl {
 		
 		echo "<div id='$this->identifier$concat'>";
 		
-		parent::Render();
-		
+		echo "<ul>";
+		foreach($this->slides as $slide)
+		{
+			echo "<li>";
+			echo $slide->Render();
+			echo "</li>";
+		}
+		echo "</ul>";
 		echo "</div>";
 	}
 }

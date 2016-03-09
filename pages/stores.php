@@ -66,6 +66,21 @@ class Stores extends PageBase {
 		$this->text_block_1 = new TextBlock();
 		
 		$this->slider_1 = new SliderContainer();
+		$this->slide_1 = new SliderControl();
+		$this->slide_2 = new SliderControl();
+		$this->slide_3 = new SliderControl();
+		
+		$this->panel_for_slide_1 = new Panel();
+		$this->label_for_slide_1 = new Label();
+		$this->img_for_slide_1 = new Image();
+		
+		$this->panel_for_slide_2 = new Panel();
+		$this->label_for_slide_2 = new Label();
+		$this->img_for_slide_2 = new Image();
+		
+		$this->panel_for_slide_3 = new Panel();
+		$this->label_for_slide_3 = new Label();
+		$this->img_for_slide_3 = new Image();
 	}
 	
 	public function CreateElements() {	
@@ -284,9 +299,71 @@ class Stores extends PageBase {
 		
 		$this->slider_1->Set("identifier", "slider_id_1");
 		$this->slider_1->Set("classname", "slider_class_1");
+		$this->slider_1->Set("add_slide", $this->slide_1);
+		$this->slider_1->Set("add_slide", $this->slide_2);
+		$this->slider_1->Set("add_slide", $this->slide_3);
 		$this->slider_1->Set("parent", $this);
 		
+		$this->slide_1->Set("identifier", "slide_1_id");
+		$this->slide_1->Set("classname", "slide_1_class");
+		$this->slide_1->Set("content", $this->panel_for_slide_1);
+		$this->slide_1->Set("parent", $this->slider_1);
 		
+		$this->panel_for_slide_1->Set("identifier", "panel_for_slide_1_id");
+		$this->panel_for_slide_1->Set("classname", "panel_for_slide_1_class");
+		
+		$this->label_for_slide_1->Set("identifier", "label_for_slide_1_id");
+		$this->label_for_slide_1->Set("classname", "label_for_slide_1_class");
+		$this->label_for_slide_1->Set("value", "SLIDE ONE");
+		$this->label_for_slide_1->Set("header", "h6");
+		$this->label_for_slide_1->Set("parent", $this->panel_for_slide_1);
+		
+		$this->img_for_slide_1->Set("identifier", "img_for_slide_1_id");
+		$this->img_for_slide_1->Set("classname", "img_for_slide_1_class");
+		$this->img_for_slide_1->Set("image_path", "resources/Numbuh_1.jpg");
+		$this->img_for_slide_1->Set("parent", $this->panel_for_slide_1);
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		$this->slide_2->Set("identifier", "slide_1_id");
+		$this->slide_2->Set("classname", "slide_1_class");
+		$this->slide_2->Set("content", $this->panel_for_slide_2);
+		$this->slide_2->Set("parent", $this->slider_1);
+		
+		$this->panel_for_slide_2->Set("identifier", "panel_for_slide_2_id");
+		$this->panel_for_slide_2->Set("classname", "panel_for_slide_2_class");
+		
+		$this->label_for_slide_2->Set("identifier", "label_for_slide_2_id");
+		$this->label_for_slide_2->Set("classname", "label_for_slide_2_class");
+		$this->label_for_slide_2->Set("value", "SLIDE TWO");
+		$this->label_for_slide_2->Set("header", "h6");
+		$this->label_for_slide_2->Set("parent", $this->panel_for_slide_2);
+		
+		$this->img_for_slide_2->Set("identifier", "img_for_slide_2_id");
+		$this->img_for_slide_2->Set("classname", "img_for_slide_2_class");
+		$this->img_for_slide_2->Set("image_path", "resources/Numbuh_1.jpg");
+		$this->img_for_slide_2->Set("parent", $this->panel_for_slide_2);
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		$this->slide_3->Set("identifier", "slide_1_id");
+		$this->slide_3->Set("classname", "slide_1_class");
+		$this->slide_3->Set("content", $this->panel_for_slide_3);
+		$this->slide_3->Set("parent", $this->slider_1);
+		
+		$this->panel_for_slide_3->Set("identifier", "panel_for_slide_3_id");
+		$this->panel_for_slide_3->Set("classname", "panel_for_slide_3_class");
+		
+		$this->label_for_slide_3->Set("identifier", "label_for_slide_3_id");
+		$this->label_for_slide_3->Set("classname", "label_for_slide_3_class");
+		$this->label_for_slide_3->Set("value", "SLIDE THREE");
+		$this->label_for_slide_3->Set("header", "h6");
+		$this->label_for_slide_3->Set("parent", $this->panel_for_slide_3);
+		
+		$this->img_for_slide_3->Set("identifier", "img_for_slide_3_id");
+		$this->img_for_slide_3->Set("classname", "img_for_slide_3_class");
+		$this->img_for_slide_3->Set("image_path", "resources/Numbuh_1.jpg");
+		$this->img_for_slide_3->Set("parent", $this->panel_for_slide_3);
 		
 		return $this;
 	}
@@ -329,8 +406,17 @@ class Stores extends PageBase {
 	private $textarea_1;
 	private $slider_1;
 	private $slide_1;
+	private $panel_for_slide_1;
+	private $label_for_slide_1;
+	private $img_for_slide_1;
 	private $slide_2;
+	private $panel_for_slide_2;
+	private $label_for_slide_2;
+	private $img_for_slide_2;
 	private $slide_3;
+	private $panel_for_slide_3;
+	private $label_for_slide_3;
+	private $img_for_slide_3;
 }
 
 ?>
