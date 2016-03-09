@@ -2,12 +2,16 @@
 
 require_once('/ezframework/uielements/containerControl.php');
 
-class Panel extends ContainerControl {
+class TabItem extends ContainerControl {
 	
 	private $classname;
+	private $status;
 	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
+			case 'status':
+				return $this->status;
+				break;
 			case 'classname':
 				return $this->classname;
 				break;
@@ -19,6 +23,10 @@ class Panel extends ContainerControl {
 	
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
+			case 'status':
+				$this->status = $value;
+				return true;
+				break;
 			case 'classname':
 				$this->classname = $value;
 				return true;
@@ -30,7 +38,7 @@ class Panel extends ContainerControl {
 	}
 	
 	public function Render() {
-		echo "<div id='$this->identifier' class='$this->classname'>";
+		echo "<div id='$this->identifier' class='$this->classname$this->status'>";
 		
 		parent::Render();
 		

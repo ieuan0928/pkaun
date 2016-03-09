@@ -39,6 +39,12 @@ class Stores extends PageBase {
 		$this->panel10 = new Panel();
 		$this->panel11 = new Panel();
 		$this->panel12 = new Panel();
+		$this->tab_panel = new Panel();
+		$this->tab_panel_1 = new Panel();
+		$this->tab_panel_2 = new Panel();
+		$this->tab_panel_3 = new Panel();
+		$this->tab_panel_4 = new Panel();
+		$this->tab_panel_5 = new Panel();
 		
 		$this->groupBox1 = new GroupBox();
 		$this->checkBox1 = new CheckBox();
@@ -204,14 +210,59 @@ class Stores extends PageBase {
 		$this->image_1->Set("parent", $this);
 		$this->file_input->Set("parent", $this);
 		
+		//////////////////////////////////////////////////////////TABS/////////////////////////////////////////////////////////////////////////
+		
 		$this->tab_container->Set("identifier", "tab_cont_id");
 		$this->tab_container->Set("classname", "tab_cont_class");
-		$this->tab_container->Set("parent", $this);
+		
+		$this->tab_panel->Set("identifier", "tab_panel_id");
+		$this->tab_panel->Set("classname", "tab_panel_class");
+		$this->label_with_Content_1->Set("parent", $this->tab_panel);
+		
+		$this->tab_panel_1->Set("identifier", "tab_panel_1_id");
+		$this->tab_panel_1->Set("classname", "tab_panel_1_class");
+		$this->label_with_Content_2->Set("parent", $this->tab_panel_1);
+		
+		$this->tab_panel_2->Set("identifier", "tab_panel_2_id");
+		$this->tab_panel_2->Set("classname", "tab_panel_2_class");
+		$this->label_with_Content_1->Set("parent", $this->tab_panel_2);
+		
+		$this->tab_panel_3->Set("identifier", "tab_panel_3_id");
+		$this->tab_panel_3->Set("classname", "tab_panel_3_class");
+		$this->label_with_Content_3->Set("parent", $this->tab_panel_3);
+		
+		$this->tab_panel_4->Set("identifier", "tab_panel_4_id");
+		$this->tab_panel_4->Set("classname", "tab_panel_4_class");
+		$this->label_with_Content_1->Set("parent", $this->tab_panel_4);
+		
+		$this->tab_panel_5->Set("identifier", "tab_panel_5_id");
+		$this->tab_panel_5->Set("classname", "tab_panel_5_class");
+		$this->label_with_Content_4->Set("parent", $this->tab_panel_5);
 		
 		$this->tab1->Set("identifier", "id_tab_1");
 		$this->tab1->Set("classname", "class_tab_1");
 		$this->tab1->Set("status", "active");
-		$this->tab1->Set("parent", $this->tab_container);
+		$this->tab1->Set("headerpanel", $this->tab_panel);
+		$this->tab1->Set("bodypanel", $this->tab_panel_1);
+		
+		$this->tab2->Set("identifier", "id_tab_2");
+		$this->tab2->Set("classname", "class_tab_2");
+		$this->tab2->Set("status", "inactive");
+		$this->tab2->Set("headerpanel", $this->tab_panel_2);
+		$this->tab2->Set("bodypanel", $this->tab_panel_3);
+	
+		$this->tab3->Set("identifier", "id_tab_3");
+		$this->tab3->Set("classname", "class_tab_3");
+		$this->tab3->Set("status", "inactive");
+		$this->tab3->Set("headerpanel", $this->tab_panel_4);
+		$this->tab3->Set("bodypanel", $this->tab_panel_5);
+		
+		$this->tab_container->Set("tabs", $this->tab1);
+		$this->tab_container->Set("tabs", $this->tab2);
+		$this->tab_container->Set("tabs", $this->tab3);
+		$this->tab_container->Set("parent", $this);
+		
+		//////////////////////////////////////////////////////////TAB END//////////////////////////////////////////////////////////////////////////////////////
 		
 		$this->panel3->Set("identifier", "label_panel_id_1");
 		$this->panel3->Set("classname", "label_panel_class_1");
@@ -230,16 +281,6 @@ class Stores extends PageBase {
 		$this->panel11->Set("identifier", "label_panel_id_11");
 		$this->panel11->Set("classname", "label_panel_class_11");
 		
-		$this->tab2->Set("identifier", "id_tab_2");
-		$this->tab2->Set("classname", "class_tab_2");
-		$this->tab2->Set("status", "inactive");
-		$this->tab2->Set("parent", $this->tab_container);
-	
-		$this->tab3->Set("identifier", "id_tab_3");
-		$this->tab3->Set("classname", "class_tab_3");
-		$this->tab3->Set("status", "inactive");
-		$this->tab3->Set("parent", $this->tab_container);
-		
 		$this->tab4->Set("identifier", "id_tab_4");
 		$this->tab4->Set("classname", "class_tab_4");
 		$this->tab4->Set("status", "inactive");
@@ -253,16 +294,6 @@ class Stores extends PageBase {
 		$this->label_with_Content_3->Set("parent", $this->panel8);
 		$this->label_with_Content_4->Set("parent", $this->panel9);
 		$this->label_with_Content_5->Set("parent", $this->panel11);
-		
-		$this->panel3->Set("parent", $this->tab1->Get("Header"));
-		$this->panel5->Set("parent", $this->tab2->Get("Header"));
-		$this->panel6->Set("parent", $this->tab3->Get("Header"));
-		$this->panel10->Set("parent", $this->tab4->Get("Header"));
-		
-		$this->panel7->Set("parent", $this->tab1->Get("content"));
-		$this->panel8->Set("parent", $this->tab2->Get("content"));
-		$this->panel9->Set("parent", $this->tab3->Get("content"));
-		$this->panel11->Set("parent", $this->tab4->Get("content"));
 		
 		$this->text_block_type_1 = TagType::h3;
 		$this->text_block_1->Set("identifier", "id_text_block_1");
@@ -281,28 +312,15 @@ class Stores extends PageBase {
 		$this->tab_container_1->Set("identifier", "tab_cont_id_1");
 		$this->tab_container_1->Set("classname", "tab_cont_class_1");
 		$this->tab_container_1->Set("parent", $this);
-		$this->tab1->Set("parent", $this->tab_container_1);
-		$this->tab2->Set("parent", $this->tab_container_1);
-		$this->tab3->Set("parent", $this->tab_container_1);
-		$this->tab4->Set("parent", $this->tab_container_1);
-		
-		// $this->panel2->AddControl($this->panel1);
-		// $this->panel2->AddControl($this->panel3);
-		// $this->panel1->AddControl($this->panel4);
-// 		
-		// $this->panel1->Set("identifier", "idkuno");
-		// $this->panel1->Set("classname", "classkuno");
-// 		
-		// $this->panel2->Set("identifier", "anakanak");
-		// $this->panel3->Set("identifier", "igsuunniidkuno");
-		// $this->panel4->Set("identifier", "bilatniidkuno"); 
+
+		////////////////////////////////////////////////SLIDER//////////////////////////////////////////////////////////////////
 		
 		$this->slider_1->Set("identifier", "slider_id_1");
 		$this->slider_1->Set("classname", "slider_class_1");
 		$this->slider_1->Set("add_slide", $this->slide_1);
 		$this->slider_1->Set("add_slide", $this->slide_2);
 		$this->slider_1->Set("add_slide", $this->slide_3);
-		$this->slider_1->Set("parent", $this);
+		//$this->slider_1->Set("parent", $this);
 		
 		$this->slide_1->Set("identifier", "slide_1_id");
 		$this->slide_1->Set("classname", "slide_1_class");
@@ -395,12 +413,20 @@ class Stores extends PageBase {
 	private $label_with_Content_4;
 	private $label_with_Content_5;
 	private $logo;
+	
 	private $tab_container;
 	private $tab_container_1;
 	private $tab1;
 	private $tab2;
 	private $tab3;
 	private $tab4;
+	private $tab_panel;
+	private $tab_panel_1;
+	private $tab_panel_2;
+	private $tab_panel_3;
+	private $tab_panel_4;
+	private $tab_panel_5;
+	
 	private $text_block_1;
 	private $text_block_type_1;
 	private $textarea_1;
