@@ -32,10 +32,6 @@ class TabContainer extends ContainerControl {
 	private $linkInlineScript;
 	private $tabStyle;
 	
-	private $tabs = array();
-	private $headerPanels = array();
-	private $bodyPanels = array();
-	
 	public function Get($propertyName) {
 		switch (strtolower(trim($propertyName))) {
 			case "tabs":
@@ -59,8 +55,9 @@ class TabContainer extends ContainerControl {
 	}
 	
 	public function AddTabs(Tab $tab)  {
-		array_push($this->tabs, $tab);
+		array_push($this->childControls, $tab);
 	}
+	
 	
 	public function Render() {
 		$concat = "_tab_container";
@@ -69,24 +66,31 @@ class TabContainer extends ContainerControl {
 		
 		echo "<div id='$this->identifier$concat'>";
 		
-			echo "<div id='$this->identifier$concatH' class='tab_container_header'>";
-				
-				foreach($this->tabs as $tab)
-				{
-					$tab->Get("headerpanel")->Render();
-				}
-				
-			echo "</div>";
+		echo "<div id='$this->identifier$concatH' class='tab_container_header_outer'>";
+		
+		echo "<div class='tab_container_header_inner'>";
+		
+		foreach($this->childControls as $tab)
+		{
+			$tab->Get("headerpanel")->Render();
+		}
+		
+		echo "</div>";
+		
+		echo "</div>";
 			
-			echo "<div id='$this->identifier$concatB' class='tab_container_body'>";
-				
-				foreach($this->tabs as $tab)
-				{
-					$tab->Get("bodypanel")->Render();
-				}
+		echo "<div id='$this->identifier$concatB' class='tab_container_body_outer'>";
+		
+		echo "<div class='tab_container_body_inner'>";
+		
+		foreach($this->childControls as $tab)
+		{
+			$tab->Get("bodypanel")->Render();
+		}
 			
-			echo "</div>";
-		//parent::Render();
+		echo "</div>";
+			
+		echo "</div>";
 		
 		echo "</div>";
 	}

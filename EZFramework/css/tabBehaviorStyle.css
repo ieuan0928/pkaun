@@ -3,12 +3,17 @@
 	cursor: pointer;
 }
 
-.tab_active
+.tab_header_active, .tab_content_active
 {
 	display: block;
 }
 
-.tab_inactive
+.tab_header_inactive
+{
+	/*display: none;*/
+}
+
+.tab_content_inactive
 {
 	display: none;
 }

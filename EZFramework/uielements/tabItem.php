@@ -38,7 +38,7 @@ class TabItem extends ContainerControl {
 	}
 	
 	public function Render() {
-		echo "<div id='$this->identifier' class='$this->classname$this->status'>";
+		echo "<div id='$this->identifier' class='$this->classname $this->status tab_item'>";
 		
 		parent::Render();
 		

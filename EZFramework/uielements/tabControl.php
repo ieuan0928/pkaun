@@ -1,15 +1,16 @@
 <?php
 
 require_once('/ezframework/uielements/controlBase.php');
-require_once('/ezframework/uielements/panel.php');
+//require_once('/ezframework/uielements/panel.php');
 
 class Tab extends ControlBase {
 	public function __construct() {
-		//$this->PreRender();
+		
 	}
+	
 	private $status;
-	private $status_active = " tab_active";
-	private $status_inactive = " tab_inactive";
+	private $status_class_header = "tab_header_inactive header_tab_click";
+	private $status_class_body = "tab_content_inactive body_tab_content";
 	private $headerPanel;
 	private $bodyPanel;
 	
@@ -33,24 +34,35 @@ class Tab extends ControlBase {
 	public function Set($propertyName, $value) {
 		switch (strtolower(trim($propertyName))) {
 			case "headerpanel":
-				$this->headerPanel = $value;
-				
-				return true;
-				break;
-			case "bodypanel":
-				$this->bodyPanel = $value;
-				return true;
-				break;
-			case "status":
-				$this->status = $value;
-			
-				if(strtolower(trim($value)) == "active")
+				if($value instanceof TabItem)
 				{
-					$value = $this->status_active;
+					$this->headerPanel = $value;
+					return true;
 				}
 				else 
 				{
-					$value = $this->status_inactive;
+					die("It must be an object of TabItem.");
+					return false;
+				}
+				break;
+			case "bodypanel":
+				if($value instanceof TabItem)
+				{
+					$this->bodyPanel = $value;
+					return true;
+				}
+				else 
+				{
+					die("It must be an object of TabItem.");
+					return false;
+				}
+				break;
+			case "status":
+				$this->status = $value;
+				if(strtolower(trim($value)) == "active")
+				{
+					$this->status_class_header = "tab_header_active header_tab_click";
+					$this->status_class_body = "tab_content_active body_tab_content";
 				}
 				return true;
 				break;
@@ -65,13 +77,11 @@ class Tab extends ControlBase {
 	}
 	
 	public function PreRender()  {
-		echo "igit igit";
-		$this->headerPanel->Set("status", $this->status);
-	}
-	
-	public function Render() {
+		$append_class_body = "";
+		$append_class_body = $this->headerPanel->Get("identifier") . " " . $this->status_class_body;
 		
-		echo "awtsssssssssssss";
+		$this->headerPanel->Set("status", $this->status_class_header);
+		$this->bodyPanel->Set("status", $append_class_body);
 	}
 }
 

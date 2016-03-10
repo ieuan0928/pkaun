@@ -10,6 +10,7 @@ require_once('/ezframework/uielements/label.php');
 require_once('/ezframework/uielements/comboBox.php');
 require_once('/ezframework/uielements/image.php');
 require_once('/ezframework/uielements/file.php');
+require_once('/ezframework/uielements/tabItem.php');
 require_once('/ezframework/uielements/tabControl.php');
 require_once('/ezframework/uielements/tabContainer.php');
 require_once('/datahelper/group.php');
@@ -39,12 +40,12 @@ class Stores extends PageBase {
 		$this->panel10 = new Panel();
 		$this->panel11 = new Panel();
 		$this->panel12 = new Panel();
-		$this->tab_panel = new Panel();
-		$this->tab_panel_1 = new Panel();
-		$this->tab_panel_2 = new Panel();
-		$this->tab_panel_3 = new Panel();
-		$this->tab_panel_4 = new Panel();
-		$this->tab_panel_5 = new Panel();
+		$this->tab_panel = new TabItem();
+		$this->tab_panel_1 = new TabItem();
+		$this->tab_panel_2 = new TabItem();
+		$this->tab_panel_3 = new TabItem();
+		$this->tab_panel_4 = new TabItem();
+		$this->tab_panel_5 = new TabItem();
 		
 		$this->groupBox1 = new GroupBox();
 		$this->checkBox1 = new CheckBox();
