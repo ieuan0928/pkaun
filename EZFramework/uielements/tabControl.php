@@ -72,10 +72,6 @@ class Tab extends ControlBase {
 		}
 	}
 	
-	public function AddControl(controlBase $child) {
-		array_push(	$this->childControls, $child);
-	}
-	
 	public function PreRender()  {
 		$append_class_body = "";
 		$append_class_body = $this->headerPanel->Get("identifier") . " " . $this->status_class_body;

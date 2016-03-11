@@ -18,7 +18,6 @@ class SliderControl extends controlBase {
 	
 	private $slideHelper;
 	private $slideStyle;
-	
 	private $content;
 	
 	public function Get($propertyName) {
@@ -41,7 +40,7 @@ class SliderControl extends controlBase {
 		}
 	}
 	
-	public function Render() {
+	public function Render() {		
 		$concat = "_slide_container";
 		
 		echo "<div id='$this->identifier' class='$this->className'>";

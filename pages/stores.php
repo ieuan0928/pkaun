@@ -310,18 +310,15 @@ class Stores extends PageBase {
 		$this->textarea_1->Set("ismultiline", true);
 		$this->textarea_1->Set("parent", $this);
 		
-		$this->tab_container_1->Set("identifier", "tab_cont_id_1");
+		/*$this->tab_container_1->Set("identifier", "tab_cont_id_1");
 		$this->tab_container_1->Set("classname", "tab_cont_class_1");
-		$this->tab_container_1->Set("parent", $this);
+		$this->tab_container_1->Set("parent", $this);*/
 
 		////////////////////////////////////////////////SLIDER//////////////////////////////////////////////////////////////////
 		
 		$this->slider_1->Set("identifier", "slider_id_1");
 		$this->slider_1->Set("classname", "slider_class_1");
-		$this->slider_1->Set("add_slide", $this->slide_1);
-		$this->slider_1->Set("add_slide", $this->slide_2);
-		$this->slider_1->Set("add_slide", $this->slide_3);
-		//$this->slider_1->Set("parent", $this);
+		$this->slider_1->Set("parent", $this);
 		
 		$this->slide_1->Set("identifier", "slide_1_id");
 		$this->slide_1->Set("classname", "slide_1_class");
@@ -344,8 +341,8 @@ class Stores extends PageBase {
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////
 		
-		$this->slide_2->Set("identifier", "slide_1_id");
-		$this->slide_2->Set("classname", "slide_1_class");
+		$this->slide_2->Set("identifier", "slide_2_id");
+		$this->slide_2->Set("classname", "slide_2_class");
 		$this->slide_2->Set("content", $this->panel_for_slide_2);
 		$this->slide_2->Set("parent", $this->slider_1);
 		
@@ -365,8 +362,8 @@ class Stores extends PageBase {
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////
 		
-		$this->slide_3->Set("identifier", "slide_1_id");
-		$this->slide_3->Set("classname", "slide_1_class");
+		$this->slide_3->Set("identifier", "slide_3_id");
+		$this->slide_3->Set("classname", "slide_3_class");
 		$this->slide_3->Set("content", $this->panel_for_slide_3);
 		$this->slide_3->Set("parent", $this->slider_1);
 		
@@ -431,6 +428,7 @@ class Stores extends PageBase {
 	private $text_block_1;
 	private $text_block_type_1;
 	private $textarea_1;
+	
 	private $slider_1;
 	private $slide_1;
 	private $panel_for_slide_1;
