@@ -14,7 +14,10 @@ class Home extends PageBase {
 	
 	private $contentPageViewer;
 	private $labeltest;
+	private $linkStores;
+	private $linkError;
 	private $storeURLParameter;
+	private $errorURLParameter;
 	
 	private function InitializeElements() {
 		$this->labeltest = new Label();
