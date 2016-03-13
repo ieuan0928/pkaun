@@ -30,9 +30,9 @@ class Home extends PageBase {
 		$this->labeltest->Set("Content", "label test lang!!");
 		$this->labeltest->Set("Parent", $this);
 		
-		$this->storeUrlParameter->Set("URLValue", "Stores");
-		$this->storeUrlParameter->Set("PageTypeName", "Stores");
-		$this->storeUrlParameter->Set("PagePath", "/pages/stores.php");
+		$this->storeURLParameter->Set("URLValue", "Stores");
+		$this->storeURLParameter->Set("PageTypeName", "Stores");
+		$this->storeURLParameter->Set("PagePath", "/pages/stores.php");
 		
 		$this->contentPageViewer->Set("Parent", $this);
 		$this->contentPageViewer->Set("Identifier", "homePageViewer");
