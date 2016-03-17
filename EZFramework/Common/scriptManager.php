@@ -54,7 +54,13 @@ class ScriptManager extends ExternalSourceManager {
 		}
 		
 		foreach ($scriptCollection as $externalScript) {
-			echo '<script type="text/javascript" src="' . ($this->isMainIndex ? "" : "../") . $externalScript->Get('Source') . '"></script>';
+			$sourceValue = ($this->isMainIndex ? "" : "../") . $externalScript->Get('Source');
+			$availableScripts = null; 
+			
+			if (isset($_POST["AvailableScripts"])) $availableScripts = $_POST["AvailableScripts"];
+			if ((!is_null($availableScripts) && !in_array($sourceValue, $availableScripts)) || (is_null($availableScripts))) 
+				echo '<script type="text/javascript" src="' . $sourceValue . '"></script>';
+			
 		}
 	}
 }

@@ -91,7 +91,7 @@ final class Site {
 		$page->PreRender();
 		
 		echo '<!DOCTYPE html>';
-		echo '<html xmlns="http://www.w3.org/1999/xhtml">';
+		echo '<html>';
 		echo '<head>';
 		echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 		echo '<meta name="viewport" content="initial-scale =1.0,maximum-scale = 1.0" />';

@@ -15,6 +15,8 @@ require_once('/ezframework/site.php');
 Site::Instance()->Set("IsMainIndex", false);
 
 if (isset($_POST["Parameter"]) && isset($_POST["ParamValue"])) {
+	$test = $_POST["AvailableScripts"];
+	var_dump($test);
 	Site::Instance()->Set("IsFullPageRequest", false);
 	Site::Instance()->RenderChildPageFromURLParameter($_POST["Parameter"], $_POST["ParamValue"]);
 }
