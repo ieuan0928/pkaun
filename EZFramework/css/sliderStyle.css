@@ -1,0 +1,27 @@
+.slider_base_class
+{
+	width: 800px;
+	height: 400px;
+	background-color: #BCBCBC;
+}
+
+.slider_base_class  ul
+{
+	width: 100%;
+	height:	100%;
+	overflow: hidden;
+}
+
+.slider_base_class  ul li
+{
+	list-style-type: none;
+	float: left;
+	width: 100%;
+	height: 400px;
+}
+
+.slide_base_class
+{
+	width: 100%;
+	height: 100%;
+}

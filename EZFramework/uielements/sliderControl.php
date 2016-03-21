@@ -43,7 +43,7 @@ class SliderControl extends controlBase {
 	public function Render() {		
 		$concat = "_slide_container";
 		
-		echo "<div id='$this->identifier' class='$this->className'>";
+		echo "<div id='$this->identifier$concat' class='slide_base_class $this->className'>";
 		
 		$this->content->Render(); 
 		

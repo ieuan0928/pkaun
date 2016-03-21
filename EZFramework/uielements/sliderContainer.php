@@ -29,6 +29,7 @@ class SliderContainer extends containerControl {
 	
 	private $sliderHelper;
 	private $sliderStyle;
+	private $effects = array();
 	
 	public function Get($propertyName) {
 		return parent::Get($propertyName);
@@ -45,13 +46,19 @@ class SliderContainer extends containerControl {
 	
 	public function slide_effects()
 	{
-		$this->childControls;
+		
 	}
 	
-	public function Render() {		
+	public function Render() {	
 		$concat = "_slider_container";
+	
+		echo "<script>
+				$('#". $this->identifier . $concat ."').ready(function(){
+					$(this).sliderControl({'effect':'slideUp'});
+				});
+			  </script>";
 		
-		echo "<div id='$this->identifier$concat'>";
+		echo "<div id='$this->identifier$concat' class='slider_base_class'>";
 		
 		echo "<ul>";
 		foreach($this->childControls as $slide)

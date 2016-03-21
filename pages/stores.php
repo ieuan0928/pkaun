@@ -263,6 +263,14 @@ class Stores extends PageBase {
 		$this->tab_container->Set("tabs", $this->tab3);
 		$this->tab_container->Set("parent", $this);
 		
+		$this->tab_container_1->Set("identifier", "tab_cont_id_1");
+		$this->tab_container_1->Set("classname", "tab_cont_class_1");
+		
+		$this->tab_container_1->Set("tabs", $this->tab1);
+		$this->tab_container_1->Set("tabs", $this->tab2);
+		$this->tab_container_1->Set("tabs", $this->tab3);
+		$this->tab_container_1->Set("parent", $this);
+		
 		//////////////////////////////////////////////////////////TAB END//////////////////////////////////////////////////////////////////////////////////////
 		
 		$this->panel3->Set("identifier", "label_panel_id_1");
