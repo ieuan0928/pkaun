@@ -27,6 +27,8 @@ class SliderContainer extends containerControl {
 		Site::Instance()->Helper()->Get("stylemanager")->AddExternalStyle($this->sliderStyle);
 	}
 	
+	private $linkInlineScript;
+	private $uniqueId;
 	private $sliderHelper;
 	private $sliderStyle;
 	private $effects = array();
@@ -49,14 +51,23 @@ class SliderContainer extends containerControl {
 		
 	}
 	
+	public function PreRender()  {
+		$this->linkInlineScript = new InlineScript();
+		$this->uniqueId = "slider_" . $this->identifier;
+		$this->linkInlineScript->Set("UniqueID", $this->uniqueId);
+		$script = "$('#" . $this->uniqueId . "').sliderControl({'effect':'slideUp'});";
+		$this->linkInlineScript->Set("script", $script);
+		parent::AddInlineReadyScript($this->linkInlineScript);
+	}
+	
 	public function Render() {	
 		$concat = "_slider_container";
-	
-		echo "<script>
-				$('#". $this->identifier . $concat ."').ready(function(){
-					$(this).sliderControl({'effect':'slideUp'});
-				});
-			  </script>";
+		
+		/*echo "<script>
+			$('#". $this->identifier . $concat ."').ready(function(){
+				$(this).sliderControl({'effect':'slideUp'});
+			});
+		</script>";*/
 		
 		echo "<div id='$this->identifier$concat' class='slider_base_class'>";
 		
