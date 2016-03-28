@@ -28,8 +28,9 @@ class TabContainer extends ContainerControl {
 		Site::Instance()->Helper()->Get("stylemanager")->AddExternalStyle($this->tabStyle);
 	}
 	
-	private $tabHelper;
 	private $linkInlineScript;
+	private $uniqueId;
+	private $tabHelper;
 	private $tabStyle;
 	
 	public function Get($propertyName) {
@@ -57,7 +58,6 @@ class TabContainer extends ContainerControl {
 	public function AddTabs(Tab $tab)  {
 		array_push($this->childControls, $tab);
 	}
-	
 	
 	public function Render() {
 		$concat = "_tab_container";
@@ -93,6 +93,10 @@ class TabContainer extends ContainerControl {
 		echo "</div>";
 		
 		echo "</div>";
+	}
+	
+	public function PostRender() {
+		//echo "<script>$('.header_tab_click').tabControl();</script>";
 	}
 }
 

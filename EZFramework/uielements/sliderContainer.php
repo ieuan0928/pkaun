@@ -53,7 +53,7 @@ class SliderContainer extends containerControl {
 	
 	public function PreRender()  {
 		$this->linkInlineScript = new InlineScript();
-		$this->uniqueId = "slider_" . $this->identifier;
+		$this->uniqueId = "slidercontainer_" . $this->identifier;
 		$this->linkInlineScript->Set("UniqueID", $this->uniqueId);
 		$script = "$('#" . $this->uniqueId . "').sliderControl({'effect':'slideUp'});";
 		$this->linkInlineScript->Set("script", $script);
@@ -62,12 +62,6 @@ class SliderContainer extends containerControl {
 	
 	public function Render() {	
 		$concat = "_slider_container";
-		
-		/*echo "<script>
-			$('#". $this->identifier . $concat ."').ready(function(){
-				$(this).sliderControl({'effect':'slideUp'});
-			});
-		</script>";*/
 		
 		echo "<div id='$this->identifier$concat' class='slider_base_class'>";
 		
@@ -80,6 +74,14 @@ class SliderContainer extends containerControl {
 		}
 		echo "</ul>";
 		echo "</div>";
+	}
+	
+	public function PostRender()  {
+		$concat = "_slider_container";
+		
+		echo "<script>
+				$('#". $this->identifier . $concat ."').sliderControl({'effect':'slideUp'});
+			</script>";
 	}
 }
 

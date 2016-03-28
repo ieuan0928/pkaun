@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$(".header_tab_click").tabControl();
+	$('.header_tab_click').tabControl();
 });
 
 (function($) {
