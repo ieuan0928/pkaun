@@ -22,15 +22,24 @@
 							availableScripts.push($(this).attr("src"));
 						}
 					});
+					
+					$('link[rel="stylesheet"]').each(function() {
+						if($(this).parents("#test1").length == 0) {
+							availableStyles.push($(this).attr("href"));
+						}
+					});
+					
 					$.ajax({
 						"method": "POST"
 						, "data" : { 
 							Parameter : settings.Parameter
 							, ParamValue : settings.ParamValue
-							, AvailableScripts: availableScripts
+							, AvailableScripts : availableScripts
+							, AvailableStyles : availableStyles
 						}
 						, "success": function(data) {
-							$("#" + settings.PageViewerId).html(data);
+							var obj = $.parseJSON(data);
+							$("#" + settings.PageViewerId).html(obj.content);
 							targetObject.stop().animate({opacity: 1.0, height: "100%" });
 						}
 					});

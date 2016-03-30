@@ -57,6 +57,24 @@ class StyleManager extends ExternalSourceManager {
 			echo '<link rel="stylesheet" type="text/css" href="' . ($this->isMainIndex ? "" : "../") . $externalStyle->Get('Source') . '"></link>';
 		}
 	}
+	
+	public function GenerateExternalStyles() {
+		$result = Array();
+		$styleCollection = $this->headExternalStyles;
+		
+		foreach ($styleCollection as $externalStyle) {
+			$sourceValue = ($this->isMainIndex ? "" : "../") . $externalStyle->Get('Source');
+			$availableStyles = null; 
+			
+			if (isset($_POST["AvailableStyles"])) $availableStyles = $_POST["AvailableStyles"];
+			if ((!is_null($availableStyles) && !in_array($sourceValue, $availableStyles)) || (is_null($availableStyles))) {
+				$newValue = '<link rel="stylesheet" type="text/css" href="' . ($this->isMainIndex ? "" : "../") . $externalStyle->Get('Source') . '"></link>';
+				array_push($result, $newValue);
+			}
+		}
+		
+		return $result;
+	}
 }
 
 ?>
