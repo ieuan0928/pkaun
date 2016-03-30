@@ -65,7 +65,7 @@ final class Site {
 		}
 	}
 	
-	public function RenderChildPageFromURLParameter($parameter, $paramValue ) {
+	public function RenderChildPageFromURLParameter($parameter, $paramValue) {
 		require_once('/ezframework/enum/urlParameterKeys.php');
 
 		$urlParameterManager = Site::Instance()->Helper()->Get("URLParameterManager");
@@ -81,8 +81,6 @@ final class Site {
 		$pageToRender->PreRender();
 		
 		$this->helper->Get("scriptmanager")->RenderExternalScript(ScriptEmbedLocationOption::Head);
-		$this->helper->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
-		
 		$pageToRender->Render();
 	}
 	
@@ -95,15 +93,16 @@ final class Site {
 		echo '<head>';
 		echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 		echo '<meta name="viewport" content="initial-scale =1.0,maximum-scale = 1.0" />';
-		echo '<link rel="stylesheet" type="text/css" href="css/dummy.css" />';
-		echo '<script type="text/javascript" src="/js/dummyanchor.js"></script>';
+		
+		$this->helper->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
+		//echo '<link rel="stylesheet" type="text/css" href="css/dummy.css" />';
+		//echo '<script type="text/javascript" src="/js/dummyanchor.js"></script>';
 		
 		echo '<title>Title</title>';
 		echo '</head>';
 		echo '<body>';
 		
 		$this->helper->Get("scriptmanager")->RenderExternalScript(ScriptEmbedLocationOption::Head);
-		$this->helper->Get("stylemanager")->RenderExternalStyle(StyleEmbedLocationOption::Head);
 		
 		$page->Render();
 
