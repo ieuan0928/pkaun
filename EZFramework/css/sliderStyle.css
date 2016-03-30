@@ -14,8 +14,9 @@
 
 .slider_base_class  ul li
 {
+	display: none;
 	list-style-type: none;
-	float: left;
+	position: absolute;
 	width: 100%;
 	height: 400px;
 }

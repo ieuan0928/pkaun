@@ -95,8 +95,6 @@ final class Site {
 		echo '<head>';
 		echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 		echo '<meta name="viewport" content="initial-scale =1.0,maximum-scale = 1.0" />';
-		echo '<link rel="stylesheet" type="text/css" href="css/dummy.css" />';
-		echo '<script type="text/javascript" src="/js/dummyanchor.js"></script>';
 		
 		echo '<title>Title</title>';
 		echo '</head>';
