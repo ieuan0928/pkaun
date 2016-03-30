@@ -40,11 +40,9 @@
 						, "success": function(data) {
 							var obj = $.parseJSON(data);
 							
-							for (var index in obj.styles) {
-								$("head").append(obj.styles[index]);
-							}
+							for (var index in obj.styles) $("head").append(obj.styles[index]);
 								
-							$("#" + settings.PageViewerId).html(obj.content);
+							$("#" + settings.PageViewerId).html(obj.content);						
 							
 							targetObject.stop().animate({opacity: 1.0, height: "100%" });
 						}
