@@ -80,7 +80,7 @@ class SliderContainer extends containerControl {
 		$concat = "_slider_container";
 		
 		echo "<script>
-				$('#". $this->identifier . $concat ."').sliderControl({'effect':'slideUp'});
+				$('#". $this->identifier . $concat ."').sliderControl({'effects':'slideUp', 'slideDuration':'3000'});
 			</script>";
 	}
 }

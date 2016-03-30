@@ -1,7 +1,3 @@
-$(document).ready(function(){
-	$('.header_tab_click').tabControl();
-});
-
 (function($) {
 	$.fn.tabControl = function(){
 		return this.each(function() {	

@@ -96,7 +96,9 @@ class TabContainer extends ContainerControl {
 	}
 	
 	public function PostRender() {
-		//echo "<script>$('.header_tab_click').tabControl();</script>";
+		$concat = "_tab_container";
+		
+		echo "<script>$('#" . $this->identifier . $concat . " .header_tab_click').tabControl();</script>";
 	}
 }
 
